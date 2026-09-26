@@ -122,6 +122,11 @@
       width:100%;padding:10px;border:1px solid #a9dccd;border-radius:10px;
       background:#effaf6;color:var(--primary);font-weight:700;cursor:pointer
     }
+    .approveBtn{
+      width:100%;padding:10px;border:0;border-radius:10px;
+      background:#e6f9f0;color:#087f62;font-weight:700;cursor:pointer;
+      border:1px solid #a8e6cb;
+    }
     .danger{
       width:100%;padding:10px;border:0;border-radius:10px;
       background:#fff0f0;color:#b52e35;font-weight:700;cursor:pointer
@@ -255,7 +260,7 @@
         <nav class="tabs">
             <button class="tab active" id="popularTab" onclick="switchTab('popular')">☷ জনপ্রিয় রুট</button>
             <button class="tab" id="customTab" onclick="switchTab('custom')">⌁ কাস্টম কিমি</button>
-            <button class="tab" id="feedbackTab" onclick="switchTab('feedback')">💬 মতামত/পরামর্শ</button>
+            <button class="tab" id="feedbackTab" onclick="switchTab('feedback')">💬 রুট জমা/মতামত</button>
         </nav>
 
         <!-- ROUTE -->
@@ -321,9 +326,36 @@
             </div>
         </section>
 
-        <!-- USER FEEDBACK FORM -->
+        <!-- USER FEEDBACK & ROUTE SUBMISSION FORM -->
         <section class="card" id="feedback" style="display:none">
-            <div class="cardTitle">💬 আপনার মূল্যবান মতামত বা নতুন রুট জানান</div>
+            <div class="cardTitle">🛣️ নতুন ভাড়ার তথ্য জমা দিন / মতামত</div>
+            
+            <div style="background:rgba(8,127,98,0.06); padding:10px; border-radius:10px; margin-bottom:12px; border:1px solid #a9e6d3;">
+                <b style="color:var(--primary-dark); font-size:12px;">প্রস্তাবিত নতুন রুট তথ্য (এডমিন যাচাই করবে)</b>
+                <div class="field" style="margin-top:8px">
+                    <label class="label">যাত্রা শুরু</label>
+                    <input id="userRouteFrom" placeholder="যেমন: নতুন বাজার">
+                </div>
+                <div class="field">
+                    <label class="label">গন্তব্য</label>
+                    <input id="userRouteTo" placeholder="যেমন: ফুলবাড়ী বাসস্ট্যান্ড">
+                </div>
+                <div class="adminGrid">
+                    <div>
+                        <label class="label">শেয়ার ভাড়া (৳)</label>
+                        <input id="userShareFare" type="number" min="0" placeholder="৳">
+                    </div>
+                    <div>
+                        <label class="label">রিজার্ভ ভাড়া (৳)</label>
+                        <input id="userReserveFare" type="number" min="0" placeholder="৳">
+                    </div>
+                </div>
+                <button class="secondary" style="margin-top:10px" onclick="submitUserRoute()">+ রুট জমা দিন</button>
+                <div id="userRouteMsg"></div>
+            </div>
+
+            <hr style="border:0; border-top:1px solid var(--border); margin:15px 0;">
+
             <div class="field">
                 <label class="label">আপনার নাম (ঐচ্ছিক)</label>
                 <input id="fbName" placeholder="যেমন: শিফা">
@@ -333,8 +365,8 @@
                 <input id="fbContact" placeholder="যোগাযোগের তথ্য">
             </div>
             <div class="field">
-                <label class="label">মতামত / নতুন ভাড়ার তথ্য</label>
-                <textarea id="fbMessage" placeholder="কোনো রুটের ভাড়া ভুল থাকলে বা নতুন কোনো রুট যোগ করতে চাইলে লিখুন..."></textarea>
+                <label class="label">সাধারণ মতামত / পরামর্শ</label>
+                <textarea id="fbMessage" placeholder="কোনো মতামত বা পরামর্শ থাকলে লিখুন..."></textarea>
             </div>
             <button class="primary" onclick="sendFeedback()">মতামত পাঠান</button>
             <div id="userFbMsg"></div>
@@ -411,6 +443,10 @@
                 </table>
             </div>
 
+            <!-- PENDING USER SUBMITTED ROUTES -->
+            <div class="cardTitle" style="margin-top:25px; color:#c05621;">⏳ পেন্ডিং রুট (ইউজারদের জমা দেওয়া)</div>
+            <div id="pendingRouteEditor"><div class="hint">পেন্ডিং রুট লোড হচ্ছে...</div></div>
+
             <!-- USER FEEDBACK MESSAGES IN ADMIN -->
             <div class="cardTitle" style="margin-top:25px">📨 ইউজারদের পাঠানো মতামত / ফিডব্যাক</div>
             <div id="adminFeedbackList"><div class="hint">ফিডব্যাক লোড হচ্ছে...</div></div>
@@ -462,7 +498,7 @@
             <div class="cardTitle" style="margin-top:18px">📋 জায়গার তালিকা</div>
             <div id="locationEditor"></div>
 
-            <div class="cardTitle" style="margin-top:25px">🛣️ নতুন রুট যোগ করুন</div>
+            <div class="cardTitle" style="margin-top:25px">🛣️ সরাসরি নতুন রুট যোগ করুন (এপ্রুভড)</div>
             <div class="field">
                 <label class="label">যাত্রা শুরু</label>
                 <select id="newRouteFrom"></select>
@@ -484,7 +520,7 @@
             <button class="secondary" style="margin-top:8px" onclick="addRoute()">+ নতুন রুট যোগ করুন</button>
             <div id="routeMsg"></div>
 
-            <div class="cardTitle" style="margin-top:18px">🛣️ রুট তালিকা</div>
+            <div class="cardTitle" style="margin-top:18px">🛣️ এপ্রুভড রুট তালিকা</div>
             <div id="routeEditor"></div>
         </section>
 
@@ -529,7 +565,8 @@
         siteName:"দিনাজপুর অটো ভাড়া গাইড",
         owner:"Raju Ahmmed",
         locations:defaultLocations.map(name => ({name})),
-        routes:[]
+        approvedRoutes:[],
+        pendingRoutes:[]
     };
 
     function esc(v){
@@ -804,6 +841,7 @@
         $("newRouteTo").innerHTML = allOptions;
         renderLocations();
         renderRoutes();
+        renderPendingRoutes();
     }
 
     async function loadData(){
@@ -822,7 +860,12 @@
             if(s.data?.site_name) data.siteName = s.data.site_name;
             const dbLocs = (l.data || []).map(x => x.name).filter(Boolean);
             data.locations = [...new Set([...dbLocs, ...defaultLocations])].map(name => ({ name }));
-            data.routes = r.data || [];
+            
+            // FILTER APPROVED AND PENDING ROUTES
+            const allRoutes = r.data || [];
+            data.approvedRoutes = allRoutes.filter(x => x.approved === true || x.approved === undefined);
+            data.pendingRoutes = allRoutes.filter(x => x.approved === false);
+            
             render();
         } catch(e) {
             render();
@@ -842,7 +885,7 @@
     function showFare(){
         const a = $("from").value, b = $("to").value;
         if(!a || !b || a===b) return alert("সঠিক রুট নির্বাচন করুন।");
-        const r = data.routes.find(x=>(x.from_location===a && x.to_location===b) || (x.from_location===b && x.to_location===a));
+        const r = data.approvedRoutes.find(x=>(x.from_location===a && x.to_location===b) || (x.from_location===b && x.to_location===a));
         $("result").style.display = "block";
         $("routeName").textContent = a + " → " + b;
         $("shareFare").textContent = r ? "৳" + r.share_fare : "তথ্য নেই";
@@ -869,6 +912,40 @@
         if(km>=0 && rate>=0) {
             $("kmFare").textContent = "৳" + Math.round(km * rate);
             $("kmResult").style.display = "block";
+        }
+    }
+
+    /* SUBMIT USER ROUTE (PENDING APPROVAL) */
+    async function submitUserRoute(){
+        const from = $('userRouteFrom').value.trim();
+        const to = $('userRouteTo').value.trim();
+        const share = Number($('userShareFare').value) || 0;
+        const reserve = Number($('userReserveFare').value) || 0;
+        const msgEl = $('userRouteMsg');
+
+        if(!from || !to) {
+            msgEl.className = "error";
+            msgEl.textContent = "অনুগ্রহ করে যাত্রা শুরু এবং গন্তব্য লিখুন।";
+            return;
+        }
+
+        if(sb) {
+            try {
+                await sb.from("routes").insert([{
+                    from_location: from,
+                    to_location: to,
+                    share_fare: share,
+                    reserve_fare: reserve,
+                    approved: false
+                }]);
+                msgEl.className = "success";
+                msgEl.textContent = "ধন্যবাদ! আপনার রুট তথ্য জমা হয়েছে। এডমিন ভেরিফাই করার পর যুক্ত হবে।";
+                $('userRouteFrom').value = '';$('userRouteTo').value = '';
+                $('userShareFare').value = '';$('userReserveFare').value = '';
+            } catch(e) {
+                msgEl.className = "error";
+                msgEl.textContent = "তথ্য জমা দিতে সমস্যা হয়েছে। আবার চেষ্টা করুন।";
+            }
         }
     }
 
@@ -999,13 +1076,14 @@
             from_location: $("newRouteFrom").value,
             to_location: $("newRouteTo").value,
             share_fare: Number($("newShareFare").value),
-            reserve_fare: Number($("newReserveFare").value)
+            reserve_fare: Number($("newReserveFare").value),
+            approved: true
         });
         loadData();
     }
 
     function renderRoutes(){
-        $("routeEditor").innerHTML = data.routes.map(r => `
+        $("routeEditor").innerHTML = data.approvedRoutes.map(r => `
             <div class="routeItem">
                 <div class="adminGrid">
                     <input value="${esc(r.from_location)}" onchange="editRoute(${r.id},'from_location',this.value)">
@@ -1017,6 +1095,37 @@
                 </div>
                 <button class="danger" style="margin-top:4px;" onclick="deleteRoute(${r.id})">Delete</button>
             </div>`).join("");
+    }
+
+    /* RENDER & APPROVE PENDING ROUTES IN ADMIN */
+    function renderPendingRoutes(){
+        const box = $("pendingRouteEditor");
+        if(!box) return;
+        if(data.pendingRoutes.length === 0){
+            box.innerHTML = `<div class="hint">কোনো পেন্ডিং রুট নেই।</div>`;
+            return;
+        }
+        box.innerHTML = data.pendingRoutes.map(r => `
+            <div class="routeItem" style="border-color:#fbd38d; background:#fffaf0;">
+                <div class="adminGrid">
+                    <input value="${esc(r.from_location)}" onchange="editRoute(${r.id},'from_location',this.value)">
+                    <input value="${esc(r.to_location)}" onchange="editRoute(${r.id},'to_location',this.value)">
+                </div>
+                <div class="adminGrid" style="margin-top:4px;">
+                    <input type="number" value="${r.share_fare}" onchange="editRoute(${r.id},'share_fare',this.value)">
+                    <input type="number" value="${r.reserve_fare}" onchange="editRoute(${r.id},'reserve_fare',this.value)">
+                </div>
+                <div class="adminGrid" style="margin-top:6px;">
+                    <button class="approveBtn" onclick="approveRoute(${r.id})">✓ Approve</button>
+                    <button class="danger" onclick="deleteRoute(${r.id})">Reject / Delete</button>
+                </div>
+            </div>`).join("");
+    }
+
+    async function approveRoute(id){
+        if(!sb) return;
+        await sb.from("routes").update({ approved: true }).eq("id", id);
+        loadData();
     }
 
     async function editRoute(id, key, value){
