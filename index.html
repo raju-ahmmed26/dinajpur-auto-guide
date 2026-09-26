@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="theme-color" content="#087f62">
     <!-- Google Search Console Verification -->
-    <meta name="google-site-verification" content="qXyPDT55fBTyJoNa2p3yWg1b3Ote5LBO1znHSoJ6c34" />
+    <meta name="google-site-verification" content="RVVms8BVVUGWd_USCax_mUQQqiPHtiaWJoK8t1QlPHU" />
     <title>দিনাজপুর অটো ভাড়া গাইড</title>
     <style>
     :root{
@@ -660,7 +660,7 @@
             const sortedDates = Object.keys(countsByDate).sort((a, b) => new Date(b) - new Date(a));
             tbody.innerHTML = sortedDates.map(date => `
                 <tr style="border-bottom: 1px solid var(--border);">
-                    <td style="padding: 6px 4px; font-weight:600;">${date}</td>
+                    <td style="padding: 6px 4px; font-weight:600;">${esc(date)}</td>
                     <td style="padding: 6px 4px; text-align: right; color: var(--primary); font-weight: bold;">${countsByDate[date]} জন</td>
                 </tr>
             `).join('');
@@ -670,72 +670,82 @@
         }
     }
 
-    /* UNLIMITED ADS */
-    function getStoredAds() {
+    /* SUPABASE CLOUD ADS MANAGEMENT */
+    async function loadAdSettings() {
+        if (!sb) return;
         try {
-            return JSON.parse(localStorage.getItem('dinajpur_ads_list') || '[]');
+            const { data: ads, error } = await sb.from('ads').select('*').order('id', { ascending: false });
+            if (error) throw error;
+
+            const popupAds = (ads || []).filter(a => a.position === 'popup' || a.position === 'both');
+            const popupEl = $('entryAd');
+            const popupSpace = $('popupAdSpace');
+
+            if (popupAds.length > 0 && popupEl && popupSpace) {
+                popupSpace.innerHTML = popupAds.map(ad => `
+                    <div style="margin-bottom:10px;">
+                        <a href="${esc(ad.link || '#')}" target="_blank" style="text-decoration:none; color:inherit; display:block;">
+                            ${ad.img ? `<img src="${ad.img}" style="max-width:100%; max-height:180px; border-radius:8px; display:block; margin:0 auto 6px;">` : ''}
+                            <p style="margin:0; font-weight:700;">${esc(ad.text || '')}</p>
+                        </a>
+                    </div>
+                `).join('');
+                popupEl.classList.remove('hidden');
+            } else if (popupEl) {
+                popupEl.classList.add('hidden');
+            }
+
+            const bannerAds = (ads || []).filter(a => a.position === 'banner' || a.position === 'both');
+            const inlineCard = $('inlineAdCard');
+            const bannerList = $('bannerAdsList');
+
+            if (bannerAds.length > 0 && inlineCard && bannerList) {
+                inlineCard.style.display = 'block';
+                bannerList.innerHTML = bannerAds.map(ad => `
+                    <div class="singleBannerAd">
+                        <a href="${esc(ad.link || '#')}" target="_blank" style="text-decoration:none; color:inherit; display:block;">
+                            ${ad.img ? `<img src="${ad.img}" style="max-width:100%; max-height:180px; border-radius:8px; display:block; margin:0 auto 6px;">` : ''}
+                            <p style="margin:0; font-weight:700; color:var(--primary-dark); font-size:13px;">${esc(ad.text || '')}</p>
+                        </a>
+                    </div>
+                `).join('');
+            } else if (inlineCard) {
+                inlineCard.style.display = 'none';
+            }
+            renderAdminAdsList(ads || []);
         } catch (e) {
-            return [];
+            console.log("Ad load error:", e);
         }
     }
 
-    function loadAdSettings() {
-        const ads = getStoredAds();
-        const popupAds = ads.filter(a => a.position === 'popup' || a.position === 'both');
-        const popupEl = $('entryAd');
-        const popupSpace = $('popupAdSpace');
-
-        if (popupAds.length > 0 && popupEl && popupSpace) {
-            popupSpace.innerHTML = popupAds.map(ad => `
-                <div style="margin-bottom:10px;">
-                    <a href="${esc(ad.link || '#')}" target="_blank" style="text-decoration:none; color:inherit; display:block;">
-                        ${ad.img ? `<img src="${ad.img}" style="max-width:100%; max-height:180px; border-radius:8px; display:block; margin:0 auto 6px;">` : ''}
-                        <p style="margin:0; font-weight:700;">${esc(ad.text || '')}</p>
-                    </a>
-                </div>
-            `).join('');
-            popupEl.classList.remove('hidden');
-        } else if (popupEl) {
-            popupEl.classList.add('hidden');
-        }
-
-        const bannerAds = ads.filter(a => a.position === 'banner' || a.position === 'both');
-        const inlineCard = $('inlineAdCard');
-        const bannerList = $('bannerAdsList');
-
-        if (bannerAds.length > 0 && inlineCard && bannerList) {
-            inlineCard.style.display = 'block';
-            bannerList.innerHTML = bannerAds.map(ad => `
-                <div class="singleBannerAd">
-                    <a href="${esc(ad.link || '#')}" target="_blank" style="text-decoration:none; color:inherit; display:block;">
-                        ${ad.img ? `<img src="${ad.img}" style="max-width:100%; max-height:180px; border-radius:8px; display:block; margin:0 auto 6px;">` : ''}
-                        <p style="margin:0; font-weight:700; color:var(--primary-dark); font-size:13px;">${esc(ad.text || '')}</p>
-                    </a>
-                </div>
-            `).join('');
-        } else if (inlineCard) {
-            inlineCard.style.display = 'none';
-        }
-        renderAdminAdsList();
-    }
-
-    function addNewAd() {
+    async function addNewAd() {
+        if (!sb) return;
         const fileInput = $('adminAdFile');
         const adText = $('adminAdText').value.trim();
         const adLink = $('adminAdLink').value.trim();
         const adPos = $('adminAdPosition').value;
         const msg = $('adMsg');
 
-        const saveAd = (imgUrl) => {
-            const ads = getStoredAds();
-            ads.push({ id: Date.now(), img: imgUrl || '', text: adText, link: adLink, position: adPos });
-            localStorage.setItem('dinajpur_ads_list', JSON.stringify(ads));
-            msg.className = "success";
-            msg.textContent = "বিজ্ঞাপন যোগ হয়েছে!";
-            $('adminAdFile').value = "";
-            $('adminAdText').value = "";
-            $('adminAdLink').value = "";
-            loadAdSettings();
+        const saveToDb = async (imgUrl) => {
+            try {
+                const { error } = await sb.from('ads').insert([{
+                    img: imgUrl || '',
+                    text: adText,
+                    link: adLink,
+                    position: adPos
+                }]);
+                if (error) throw error;
+
+                msg.className = "success";
+                msg.textContent = "সফলভাবে বিজ্ঞাপন ডাটাবেজে যোগ হয়েছে!";
+                $('adminAdFile').value = "";
+                $('adminAdText').value = "";
+                $('adminAdLink').value = "";
+                loadAdSettings();
+            } catch (err) {
+                msg.className = "error";
+                msg.textContent = "বিজ্ঞাপন সেভ করতে সমস্যা হয়েছে।";
+            }
         };
 
         if (fileInput.files && fileInput.files[0]) {
@@ -749,20 +759,19 @@
                     canvas.width = img.width > 300 ? 300 : img.width;
                     canvas.height = img.width > 300 ? img.height * scale : img.height;
                     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                    saveAd(canvas.toDataURL('image/jpeg', 0.5));
+                    saveToDb(canvas.toDataURL('image/jpeg', 0.5));
                 };
                 img.src = e.target.result;
             };
             reader.readAsDataURL(fileInput.files[0]);
         } else {
-            saveAd(null);
+            saveToDb(null);
         }
     }
 
-    function renderAdminAdsList() {
+    function renderAdminAdsList(ads) {
         const box = $('adminAdsContainer');
         if (!box) return;
-        const ads = getStoredAds();
         if (!ads.length) {
             box.innerHTML = `<div class="hint">কোনো বিজ্ঞাপন নেই।</div>`;
             return;
@@ -770,19 +779,23 @@
         box.innerHTML = ads.map((ad, idx) => `
             <div class="adItemAdmin">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <b>অ্যাড #${idx + 1} (${ad.position})</b>
+                    <b>অ্যাড #${idx + 1} (${esc(ad.position)})</b>
                     <button class="smallDelete" onclick="deleteAd(${ad.id})">Delete</button>
                 </div>
-                ${ad.img ? `<img src="${ad.img}" style="max-width:80px; max-height:50px; margin-top:4px; border-radius:4px;">` : ''}
+                ${ad.img ? `<img src="${esc(ad.img)}" style="max-width:80px; max-height:50px; margin-top:4px; border-radius:4px;">` : ''}
                 <div style="font-size:12px;">${esc(ad.text)}</div>
             </div>
         `).join('');
     }
 
-    function deleteAd(id) {
-        let ads = getStoredAds().filter(a => a.id !== id);
-        localStorage.setItem('dinajpur_ads_list', JSON.stringify(ads));
-        loadAdSettings();
+    async function deleteAd(id) {
+        if (!sb || !confirm("বিজ্ঞাপনটি মুছে ফেলবেন?")) return;
+        try {
+            await sb.from('ads').delete().eq('id', id);
+            loadAdSettings();
+        } catch (e) {
+            alert("ডিলিট করতে সমস্যা হয়েছে!");
+        }
     }
 
     function closeEntryAd(){
