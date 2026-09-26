@@ -1,1102 +1,1058 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Hello, World!</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-      <h1 class="title">Hello World!</h1>
-      <p id="currentTime"></p>
-      <script src="script.js"></script>
-  </body>
-</html<!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#087f62">
-<title>দিনাজপুর অটো ভাড়া গাইড</title>
-<style>
-:root{
-  --primary:#087f62;
-  --primary-dark:#06664e;
-  --bg:#f5fbf8;
-  --text:#16231f;
-  --border:#dce9e4;
-  --card:#fff;
-}
-/* ANTI-COPY CSS SETUP */
-body, html {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-input, select, textarea {
-  -webkit-user-select: auto !important;
-  -moz-user-select: auto !important;
-  -ms-user-select: auto !important;
-  user-select: auto !important;
-}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;
-  font-size:14px;
-}
-.app{max-width:600px;margin:auto;min-height:100vh;padding-bottom:40px}
-.header{
-  background:var(--card);border-bottom:1px solid var(--border);
-  padding:14px 16px;position:sticky;top:0;z-index:100
-}
-.headerRow{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.brand{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none}
-.logo{
-  width:44px;height:44px;border-radius:12px;
-  background:linear-gradient(145deg,#13bd8b,var(--primary));
-  display:grid;place-items:center;color:white;font-size:21px
-}
-.brand h1{font-size:17px;line-height:1.2;margin:0;color:var(--primary-dark)}
-.brand p{font-size:10px;color:#5f9b89;margin:2px 0 0}
-.headBtns{display:flex;gap:6px}
-.circle{
-  width:38px;height:38px;border:0;border-radius:10px;
-  background:#f2f6f4;color:#23332e;font-size:16px;cursor:pointer
-}
-.hero{text-align:center;padding:20px 16px 10px}
-.badge{
-  display:inline-flex;padding:6px 12px;border:1px solid #a9e6d3;
-  border-radius:20px;background:#e9fbf5;color:var(--primary);
-  font-weight:700;font-size:12px
-}
-.hero h2{font-size:25px;margin:13px 0 6px;font-weight:900}
-.hero h2 span{color:#0aa982}
-.desc{font-size:13px;color:#7a8883;line-height:1.5;margin:auto;max-width:500px}
-.owner{
-  margin:12px 16px 0;background:var(--card);border:1px solid var(--border);
-  border-radius:16px;padding:12px 16px;display:flex;align-items:center;
-  gap:12px;box-shadow:0 4px 15px rgba(17,83,65,.05)
-}
-.avatar{
-  width:45px;height:45px;border-radius:50%;background:var(--primary);
-  color:#fff;display:grid;place-items:center;font-weight:800
-}
-.ownerName{font-size:15px;font-weight:800}
-.ownerSub{font-size:11px;color:#89948f;margin-top:2px}
-.tabs{display:flex;gap:8px;padding:14px 16px 0}
-.tab{
-  flex:1;border:0;background:transparent;color:#7a8581;font-weight:700;
-  font-size:13px;padding:10px;border-bottom:3px solid transparent;cursor:pointer
-}
-.tab.active{color:var(--primary);border-bottom-color:#8bdcc6}
-.card{
-  margin:12px 16px 0;background:var(--card);border:1px solid var(--border);
-  border-radius:18px;padding:16px;box-shadow:0 4px 15px rgba(17,83,65,.05)
-}
-.cardTitle{font-size:16px;font-weight:800;color:#123c31;margin-bottom:14px}
-.field{margin-bottom:12px}
-.label{display:block;font-weight:700;font-size:13px;margin-bottom:6px}
-.label.from:before,.label.to:before{
-  content:"";display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px
-}
-.label.from:before{background:#14a982}
-.label.to:before{background:#e9565b}
-select,input,textarea{
-  width:100%;height:44px;border:1.5px solid #dce5e1;border-radius:12px;
-  padding:0 12px;background:#fff;color:#35423e;font-size:14px;outline:none
-}
-textarea{height:80px;padding:10px;font-family:inherit;}
-input[type="file"]{
-  padding:8px;line-height:24px;
-}
-select{appearance:auto}
-.searchInput{
-  margin-bottom: 6px;
-  font-size: 13px;
-  height: 38px;
-  border-color: #cde3db;
-}
-.swap{
-  display:block;margin:6px auto 12px;width:32px;height:32px;border-radius:50%;
-  border:1px solid #a8ddce;background:#effbf7;color:var(--primary);cursor:pointer
-}
-.primary{
-  width:100%;height:44px;border:0;border-radius:12px;
-  background:linear-gradient(135deg,var(--primary),#0aa982);
-  color:#fff;font-weight:800;cursor:pointer
-}
-.secondary{
-  width:100%;padding:10px;border:1px solid #a9dccd;border-radius:10px;
-  background:#effaf6;color:var(--primary);font-weight:700;cursor:pointer
-}
-.danger{
-  width:100%;padding:10px;border:0;border-radius:10px;
-  background:#fff0f0;color:#b52e35;font-weight:700;cursor:pointer
-}
-.adminGrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.result{display:none}
-.resultHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.routeName{font-weight:800;font-size:15px}
-.verified{font-size:10px;background:#eaf8f1;color:var(--primary);padding:4px 6px;border-radius:6px}
-.fares{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.fare{background:#effaf6;border-radius:12px;padding:12px;text-align:center}
-.fare small{color:#72807b;font-size:10px}
-.fare b{display:block;color:var(--primary);font-size:20px;margin-top:2px}
-.hint{font-size:10px;color:#89948f;line-height:1.4;margin-top:8px}
-.live{display:flex;align-items:center;gap:9px}
-.liveDot{width:9px;height:9px;border-radius:50%;background:#18ad62}
-.liveTitle{font-weight:800;font-size:14px}
-.liveSub{font-size:10px;color:#87928e}
-.liveNum{margin-left:auto;font-size:18px;font-weight:900;color:var(--primary)}
-.visitor{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
-.visitorBox{border:1px solid var(--border);border-radius:12px;padding:10px;text-align:center}
-.visitorBox small{display:block;color:#75827e;font-size:10px}
-.visitorBox b{display:block;font-size:17px;color:var(--primary)}
-.login,.admin{display:none}
-.error{color:#b42318;font-size:11px;margin-top:7px}
-.success{color:var(--primary);font-size:11px;margin-top:7px}
-.routeItem,.locationItem,.adItemAdmin,.feedbackItem{
-  border:1px solid var(--border);border-radius:12px;padding:10px;margin:8px 0
-}
-.locationItem{
-  display:flex;align-items:center;justify-content:space-between;gap:8px
-}
-.locationName{font-weight:700;font-size:13px}
-.smallDelete{
-  border:0;background:#fff0f0;color:#b52e35;padding:6px 9px;
-  border-radius:7px;font-size:11px;cursor:pointer
-}
-.adOverlay{
-  position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;
-  display:flex;align-items:center;justify-content:center;padding:18px
-}
-.adOverlay.hidden {
-  display: none !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
-.adBox{
-  width:min(360px,100%);background:#fff;border-radius:18px;padding:14px;
-  box-shadow:0 18px 55px rgba(0,0,0,.28);text-align:center
-}
-.adLabel{font-size:10px;color:#89948f;margin-bottom:8px}
-.adSpace{
-  min-height:180px;display:grid;place-items:center;border:1px dashed #cbdad4;
-  border-radius:12px;background:#f7fbf9;color:#71807a;font-size:13px;padding:10px
-}
-.adClose{
-  margin-top:10px;width:100%;height:44px;border:0;border-radius:11px;
-  background:var(--primary);color:#fff;font-weight:800;cursor:pointer
-}
-.inlineAdCard{
-  margin:12px 16px 0;background:var(--card);border:1px solid var(--border);
-  border-radius:16px;padding:12px;text-align:center;box-shadow:0 4px 15px rgba(17,83,65,.05)
-}
-.adBannerContainer{
-  display:flex;flex-direction:column;gap:10px;margin-top:8px
-}
-.singleBannerAd{
-  border:1px solid var(--border);border-radius:12px;padding:8px;background:#fff
-}
-.dark{background:#101815;color:#edf5f1}
-.dark .header,.dark .owner,.dark .card,.dark .visitorBox,.dark .inlineAdCard,.dark .singleBannerAd{background:#18231e;border-color:#304139}
-.dark .brand h1,.dark .cardTitle{color:#b7f0de}
-.dark .circle{background:#24312b;color:#fff}
-.dark select,.dark input,.dark textarea{background:#1c2822;color:#edf5f1;border-color:#304139}
-.dark .desc,.dark .ownerSub,.dark .hint{color:#a6b3ad}
-.dark .adBox{background:#18231e}
-.dark .adSpace{background:#1c2822;border-color:#304139;color:#a6b3ad}
-footer{text-align:center;color:var(--primary-dark);font-size:11px;padding:20px 10px;opacity:.7}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="theme-color" content="#087f62">
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="RVVms8BVVUGWd_USCax_mUQQqiPHtiaWJoK8t1QlPHU" />
+    <title>দিনাজপুর অটো ভাড়া গাইড</title>
+    <style>
+    :root{
+      --primary:#087f62;
+      --primary-dark:#06664e;
+      --bg:#f5fbf8;
+      --text:#16231f;
+      --border:#dce9e4;
+      --card:#fff;
+    }
+    /* ANTI-COPY CSS SETUP */
+    body, html {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    input, select, textarea {
+      -webkit-user-select: auto !important;
+      -moz-user-select: auto !important;
+      -ms-user-select: auto !important;
+      user-select: auto !important;
+    }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    body{
+      margin:0;background:var(--bg);color:var(--text);
+      font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;
+      font-size:14px;
+    }
+    .app{max-width:600px;margin:auto;min-height:100vh;padding-bottom:40px}
+    .header{
+      background:var(--card);border-bottom:1px solid var(--border);
+      padding:14px 16px;position:sticky;top:0;z-index:100
+    }
+    .headerRow{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .brand{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none}
+    .logo{
+      width:44px;height:44px;border-radius:12px;
+      background:linear-gradient(145deg,#13bd8b,var(--primary));
+      display:grid;place-items:center;color:white;font-size:21px
+    }
+    .brand h1{font-size:17px;line-height:1.2;margin:0;color:var(--primary-dark)}
+    .brand p{font-size:10px;color:#5f9b89;margin:2px 0 0}
+    .headBtns{display:flex;gap:6px}
+    .circle{
+      width:38px;height:38px;border:0;border-radius:10px;
+      background:#f2f6f4;color:#23332e;font-size:16px;cursor:pointer
+    }
+    .hero{text-align:center;padding:20px 16px 10px}
+    .badge{
+      display:inline-flex;padding:6px 12px;border:1px solid #a9e6d3;
+      border-radius:20px;background:#e9fbf5;color:var(--primary);
+      font-weight:700;font-size:12px
+    }
+    .hero h2{font-size:25px;margin:13px 0 6px;font-weight:900}
+    .hero h2 span{color:#0aa982}
+    .desc{font-size:13px;color:#7a8883;line-height:1.5;margin:auto;max-width:500px}
+    .owner{
+      margin:12px 16px 0;background:var(--card);border:1px solid var(--border);
+      border-radius:16px;padding:12px 16px;display:flex;align-items:center;
+      gap:12px;box-shadow:0 4px 15px rgba(17,83,65,.05)
+    }
+    .avatar{
+      width:45px;height:45px;border-radius:50%;background:var(--primary);
+      color:#fff;display:grid;place-items:center;font-weight:800
+    }
+    .ownerName{font-size:15px;font-weight:800}
+    .ownerSub{font-size:11px;color:#89948f;margin-top:2px}
+    .tabs{display:flex;gap:8px;padding:14px 16px 0}
+    .tab{
+      flex:1;border:0;background:transparent;color:#7a8581;font-weight:700;
+      font-size:13px;padding:10px;border-bottom:3px solid transparent;cursor:pointer
+    }
+    .tab.active{color:var(--primary);border-bottom-color:#8bdcc6}
+    .card{
+      margin:12px 16px 0;background:var(--card);border:1px solid var(--border);
+      border-radius:18px;padding:16px;box-shadow:0 4px 15px rgba(17,83,65,.05)
+    }
+    .cardTitle{font-size:16px;font-weight:800;color:#123c31;margin-bottom:14px}
+    .field{margin-bottom:12px}
+    .label{display:block;font-weight:700;font-size:13px;margin-bottom:6px}
+    .label.from:before,.label.to:before{
+      content:"";display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px
+    }
+    .label.from:before{background:#14a982}
+    .label.to:before{background:#e9565b}
+    select,input,textarea{
+      width:100%;height:44px;border:1.5px solid #dce5e1;border-radius:12px;
+      padding:0 12px;background:#fff;color:#35423e;font-size:14px;outline:none
+    }
+    textarea{height:80px;padding:10px;font-family:inherit;}
+    input[type="file"]{
+      padding:8px;line-height:24px;
+    }
+    select{appearance:auto}
+    .searchInput{
+      margin-bottom: 6px;
+      font-size: 13px;
+      height: 38px;
+      border-color: #cde3db;
+    }
+    .swap{
+      display:block;margin:6px auto 12px;width:32px;height:32px;border-radius:50%;
+      border:1px solid #a8ddce;background:#effbf7;color:var(--primary);cursor:pointer
+    }
+    .primary{
+      width:100%;height:44px;border:0;border-radius:12px;
+      background:linear-gradient(135deg,var(--primary),#0aa982);
+      color:#fff;font-weight:800;cursor:pointer
+    }
+    .secondary{
+      width:100%;padding:10px;border:1px solid #a9dccd;border-radius:10px;
+      background:#effaf6;color:var(--primary);font-weight:700;cursor:pointer
+    }
+    .danger{
+      width:100%;padding:10px;border:0;border-radius:10px;
+      background:#fff0f0;color:#b52e35;font-weight:700;cursor:pointer
+    }
+    .adminGrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+    .result{display:none}
+    .resultHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+    .routeName{font-weight:800;font-size:15px}
+    .verified{font-size:10px;background:#eaf8f1;color:var(--primary);padding:4px 6px;border-radius:6px}
+    .fares{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .fare{background:#effaf6;border-radius:12px;padding:12px;text-align:center}
+    .fare small{color:#72807b;font-size:10px}
+    .fare b{display:block;color:var(--primary);font-size:20px;margin-top:2px}
+    .hint{font-size:10px;color:#89948f;line-height:1.4;margin-top:8px}
+    .live{display:flex;align-items:center;gap:9px}
+    .liveDot{width:9px;height:9px;border-radius:50%;background:#18ad62}
+    .liveTitle{font-weight:800;font-size:14px}
+    .liveSub{font-size:10px;color:#87928e}
+    .liveNum{margin-left:auto;font-size:18px;font-weight:900;color:var(--primary)}
+    .visitor{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+    .visitorBox{border:1px solid var(--border);border-radius:12px;padding:10px;text-align:center}
+    .visitorBox small{display:block;color:#75827e;font-size:10px}
+    .visitorBox b{display:block;font-size:17px;color:var(--primary)}
+    .login,.admin{display:none}
+    .error{color:#b42318;font-size:11px;margin-top:7px}
+    .success{color:var(--primary);font-size:11px;margin-top:7px}
+    .routeItem,.locationItem,.adItemAdmin,.feedbackItem{
+      border:1px solid var(--border);border-radius:12px;padding:10px;margin:8px 0
+    }
+    .locationItem{
+      display:flex;align-items:center;justify-content:space-between;gap:8px
+    }
+    .locationName{font-weight:700;font-size:13px}
+    .smallDelete{
+      border:0;background:#fff0f0;color:#b52e35;padding:6px 9px;
+      border-radius:7px;font-size:11px;cursor:pointer
+    }
+    .adOverlay{
+      position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;
+      display:flex;align-items:center;justify-content:center;padding:18px
+    }
+    .adOverlay.hidden {
+      display: none !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+    .adBox{
+      width:min(360px,100%);background:#fff;border-radius:18px;padding:14px;
+      box-shadow:0 18px 55px rgba(0,0,0,.28);text-align:center
+    }
+    .adLabel{font-size:10px;color:#89948f;margin-bottom:8px}
+    .adSpace{
+      min-height:180px;display:grid;place-items:center;border:1px dashed #cbdad4;
+      border-radius:12px;background:#f7fbf9;color:#71807a;font-size:13px;padding:10px
+    }
+    .adClose{
+      margin-top:10px;width:100%;height:44px;border:0;border-radius:11px;
+      background:var(--primary);color:#fff;font-weight:800;cursor:pointer
+    }
+    .inlineAdCard{
+      margin:12px 16px 0;background:var(--card);border:1px solid var(--border);
+      border-radius:16px;padding:12px;text-align:center;box-shadow:0 4px 15px rgba(17,83,65,.05)
+    }
+    .adBannerContainer{
+      display:flex;flex-direction:column;gap:10px;margin-top:8px
+    }
+    .singleBannerAd{
+      border:1px solid var(--border);border-radius:12px;padding:8px;background:#fff
+    }
+    .dark{background:#101815;color:#edf5f1}
+    .dark .header,.dark .owner,.dark .card,.dark .visitorBox,.dark .inlineAdCard,.dark .singleBannerAd{background:#18231e;border-color:#304139}
+    .dark .brand h1,.dark .cardTitle{color:#b7f0de}
+    .dark .circle{background:#24312b;color:#fff}
+    .dark select,.dark input,.dark textarea{background:#1c2822;color:#edf5f1;border-color:#304139}
+    .dark .desc,.dark .ownerSub,.dark .hint{color:#a6b3ad}
+    .dark .adBox{background:#18231e}
+    .dark .adSpace{background:#1c2822;border-color:#304139;color:#a6b3ad}
+    footer{text-align:center;color:var(--primary-dark);font-size:11px;padding:20px 10px;opacity:.7}
+    </style>
 </head>
 <body oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
 
-<!-- Entry Ad (Popup Modal) -->
-<div class="adOverlay hidden" id="entryAd">
-  <div class="adBox">
-    <div class="adLabel">বিজ্ঞাপন</div>
-    <div class="adSpace" id="popupAdSpace"></div>
-    <button class="adClose" type="button" onclick="closeEntryAd()">প্রবেশ করুন</button>
-  </div>
-</div>
-
-<div class="app">
-  <header class="header">
-    <div class="headerRow">
-      <div class="brand" onclick="secretTapTrigger()">
-        <div class="logo">⚡</div>
-        <div>
-          <h1 id="siteName">দিনাজপুর অটো ভাড়া গাইড</h1>
-          <p>Local Easy-Bike Fare</p>
+    <!-- Entry Ad (Popup Modal) -->
+    <div class="adOverlay hidden" id="entryAd">
+        <div class="adBox">
+            <div class="adLabel">বিজ্ঞাপন</div>
+            <div class="adSpace" id="popupAdSpace"></div>
+            <button class="adClose" type="button" onclick="closeEntryAd()">প্রবেশ করুন</button>
         </div>
-      </div>
-      <div class="headBtns">
-        <button class="circle" type="button" onclick="toggleDark()">☾</button>
-      </div>
-    </div>
-  </header>
-
-  <section class="hero">
-    <div class="badge">📍 দিনাজপুর রুট গাইড</div>
-    <h2>দিনাজপুরে স্বাগতম</h2>
-    <h2 style="font-size:21px;margin-top:4px">
-      কোথায় কত ভাড়া? <span>এক ক্লিকেই জানুন</span>
-    </h2>
-    <p class="desc">স্টেশন, বাসস্ট্যান্ড বা শহরের যেকোনো জায়গার অটো বা ইজি বাইক ভাড়ার হিসাব।</p>
-  </section>
-
-  <section class="owner">
-    <div class="avatar">RA</div>
-    <div>
-      <div class="ownerName" id="ownerName">Raju Ahmmed</div>
-      <div class="ownerSub">অটো ভাড়া ক্যালকুলেটর</div>
-    </div>
-  </section>
-
-  <!-- Web Banner Ads -->
-  <div class="inlineAdCard" id="inlineAdCard" style="display:none;">
-    <div style="font-size:10px;color:#89948f;margin-bottom:4px;">বিজ্ঞাপন</div>
-    <div class="adBannerContainer" id="bannerAdsList"></div>
-  </div>
-
-  <nav class="tabs">
-    <button class="tab active" id="popularTab" onclick="switchTab('popular')">☷ জনপ্রিয় রুট</button>
-    <button class="tab" id="customTab" onclick="switchTab('custom')">⌁ কাস্টম কিমি</button>
-    <button class="tab" id="feedbackTab" onclick="switchTab('feedback')">💬 মতামত/পরামর্শ</button>
-  </nav>
-
-  <!-- ROUTE -->
-  <section class="card" id="popular">
-    <div class="cardTitle">🗺️ রুট সিলেক্ট করুন</div>
-    
-    <!-- FROM FIELD & SEARCH -->
-    <div class="field">
-      <label class="label from">যাত্রা শুরু:</label>
-      <input class="searchInput" id="fromSearch" placeholder="🔍 যাত্রা শুরুর জায়গা খুঁজুন..." oninput="filterFromLocations()">
-      <select id="from"></select>
     </div>
 
-    <button class="swap" onclick="swapRoute()">⇅</button>
+    <div class="app">
+        <header class="header">
+            <div class="headerRow">
+                <div class="brand" onclick="secretTapTrigger()">
+                    <div class="logo">⚡</div>
+                    <div>
+                        <h1 id="siteName">দিনাজপুর অটো ভাড়া গাইড</h1>
+                        <p>Local Easy-Bike Fare</p>
+                    </div>
+                </div>
+                <div class="headBtns">
+                    <button class="circle" type="button" onclick="toggleDark()">☾</button>
+                </div>
+            </div>
+        </header>
 
-    <!-- TO FIELD & SEARCH -->
-    <div class="field">
-      <label class="label to">গন্তব্য:</label>
-      <input class="searchInput" id="toSearch" placeholder="🔍 গন্তব্যের জায়গা খুঁজুন..." oninput="filterToLocations()">
-      <select id="to"></select>
+        <section class="hero">
+            <div class="badge">📍 দিনাজপুর রুট গাইড</div>
+            <h2>দিনাজপুরে স্বাগতম</h2>
+            <h2 style="font-size:21px;margin-top:4px">
+                কোথায় কত ভাড়া? <span>এক ক্লিকেই জানুন</span>
+            </h2>
+            <p class="desc">স্টেশন, বাসস্ট্যান্ড বা শহরের যেকোনো জায়গার অটো বা ইজি বাইক ভাড়ার হিসাব।</p>
+        </section>
+
+        <section class="owner">
+            <div class="avatar">RA</div>
+            <div>
+                <div class="ownerName" id="ownerName">Raju Ahmmed</div>
+                <div class="ownerSub">অটো ভাড়া ক্যালকুলেটর</div>
+            </div>
+        </section>
+
+        <!-- Web Banner Ads -->
+        <div class="inlineAdCard" id="inlineAdCard" style="display:none;">
+            <div style="font-size:10px;color:#89948f;margin-bottom:4px;">বিজ্ঞাপন</div>
+            <div class="adBannerContainer" id="bannerAdsList"></div>
+        </div>
+
+        <nav class="tabs">
+            <button class="tab active" id="popularTab" onclick="switchTab('popular')">☷ জনপ্রিয় রুট</button>
+            <button class="tab" id="customTab" onclick="switchTab('custom')">⌁ কাস্টম কিমি</button>
+            <button class="tab" id="feedbackTab" onclick="switchTab('feedback')">💬 মতামত/পরামর্শ</button>
+        </nav>
+
+        <!-- ROUTE -->
+        <section class="card" id="popular">
+            <div class="cardTitle">🗺️ রুট সিলেক্ট করুন</div>
+
+            <!-- FROM FIELD & SEARCH -->
+            <div class="field">
+                <label class="label from">যাত্রা শুরু:</label>
+                <input class="searchInput" id="fromSearch" placeholder="🔍 যাত্রা শুরুর জায়গা খুঁজুন..." oninput="filterFromLocations()">
+                <select id="from"></select>
+            </div>
+
+            <button class="swap" onclick="swapRoute()">⇅</button>
+
+            <!-- TO FIELD & SEARCH -->
+            <div class="field">
+                <label class="label to">গন্তব্য:</label>
+                <input class="searchInput" id="toSearch" placeholder="🔍 গন্তব্যের জায়গা খুঁজুন..." oninput="filterToLocations()">
+                <select id="to"></select>
+            </div>
+
+            <button class="primary" onclick="showFare()">ভাড়া দেখুন</button>
+        </section>
+
+        <!-- RESULT -->
+        <section class="card result" id="result">
+            <div class="resultHead">
+                <div class="routeName" id="routeName"></div>
+                <span class="verified">✓ ভেরিফাইড</span>
+            </div>
+            <div class="fares">
+                <div class="fare">
+                    <small>শেয়ার ভাড়া</small>
+                    <b id="shareFare">—</b>
+                </div>
+                <div class="fare">
+                    <small>রিজার্ভ ভাড়া</small>
+                    <b id="reserveFare">—</b>
+                </div>
+            </div>
+            <button class="secondary" style="margin-top:10px;" onclick="shareRouteFare()">📲 ভাড়া শেয়ার / কপি করুন</button>
+            <div class="hint">ভাড়া স্থানীয় পরিস্থিতি অনুযায়ী সামান্য পরিবর্তিত হতে পারে।</div>
+        </section>
+
+        <!-- CUSTOM KM -->
+        <section class="card" id="custom" style="display:none">
+            <div class="cardTitle">🧮 কাস্টম কিমি হিসাব</div>
+            <div class="adminGrid">
+                <div>
+                    <label class="label">দূরত্ব (কিমি)</label>
+                    <input id="km" type="number" min="0" step=".1" placeholder="যেমন 5">
+                </div>
+                <div>
+                    <label class="label">প্রতি কিমি (৳)</label>
+                    <input id="rate" type="number" min="0" value="12">
+                </div>
+            </div>
+            <button class="primary" style="margin-top:10px" onclick="calculateKm()">হিসাব করুন</button>
+            <div id="kmResult" class="fare" style="display:none;margin-top:10px">
+                <small>আনুমানিক ভাড়া</small>
+                <b id="kmFare">৳0</b>
+            </div>
+        </section>
+
+        <!-- USER FEEDBACK FORM -->
+        <section class="card" id="feedback" style="display:none">
+            <div class="cardTitle">💬 আপনার মূল্যবান মতামত বা নতুন রুট জানান</div>
+            <div class="field">
+                <label class="label">আপনার নাম (ঐচ্ছিক)</label>
+                <input id="fbName" placeholder="যেমন: শিফা">
+            </div>
+            <div class="field">
+                <label class="label">মোবাইল / ইমেইল (ঐচ্ছিক)</label>
+                <input id="fbContact" placeholder="যোগাযোগের তথ্য">
+            </div>
+            <div class="field">
+                <label class="label">মতামত / নতুন ভাড়ার তথ্য</label>
+                <textarea id="fbMessage" placeholder="কোনো রুটের ভাড়া ভুল থাকলে বা নতুন কোনো রুট যোগ করতে চাইলে লিখুন..."></textarea>
+            </div>
+            <button class="primary" onclick="sendFeedback()">মতামত পাঠান</button>
+            <div id="userFbMsg"></div>
+        </section>
+
+        <!-- REAL VISITOR STATS -->
+        <section class="card">
+            <div class="live">
+                <span class="liveDot"></span>
+                <div>
+                    <div class="liveTitle">লাইভ একটিভ</div>
+                    <div class="liveSub">বর্তমানে ওয়েবে আছেন</div>
+                </div>
+                <div class="liveNum" id="onlineVisitors">1</div>
+            </div>
+            <div class="visitor">
+                <div class="visitorBox">
+                    <small>আজকের ভিজিটর</small>
+                    <b id="todayVisitors">0</b>
+                </div>
+                <div class="visitorBox">
+                    <small>মোট ভিজিটর</small>
+                    <b id="totalVisitors">0</b>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOGIN PANEL (SECRET) -->
+        <section class="card login" id="loginPanel">
+            <div class="cardTitle">🔐 Admin Login</div>
+            <label class="label">Email</label>
+            <input id="loginEmail" type="email" placeholder="admin@example.com">
+            <label class="label" style="margin-top:8px">Password</label>
+            <input id="loginPassword" type="password" placeholder="Password">
+            <button class="primary" style="margin-top:10px" onclick="login()">Login</button>
+            <div id="loginMsg"></div>
+        </section>
+
+        <!-- ADMIN PANEL -->
+        <section class="card admin" id="adminPanel">
+            <div class="cardTitle">⚙️ Admin Panel</div>
+            <div class="hint" id="adminUser"></div>
+            <button class="secondary" style="margin-top:8px" onclick="logout()">Logout</button>
+
+            <div class="cardTitle" style="margin-top:20px">📊 ভিজিটর ট্র্যাকিং (Real Database Stats)</div>
+            <div class="visitor">
+                <div class="visitorBox">
+                    <small>আজকের ভিজিটর</small>
+                    <b id="adminTodayVisitors">0</b>
+                </div>
+                <div class="visitorBox">
+                    <small>লাইভ একটিভ</small>
+                    <b id="adminLiveVisitors">1</b>
+                </div>
+                <div class="visitorBox" style="grid-column: span 2;">
+                    <small>মোট ভিজিটর</small>
+                    <b id="adminTotalVisitors">0</b>
+                </div>
+            </div>
+
+            <!-- DATE-WISE VISITOR HISTORY TABLE -->
+            <div style="background: rgba(8,127,98,0.08); padding: 12px; border-radius: 12px; margin-top: 15px; border: 1px solid var(--border);">
+                <h4 style="margin: 0 0 10px 0; color: var(--primary-dark); font-weight: 800; font-size: 13px;">📅 তারিখ অনুযায়ী ভিজিটর হিস্ট্রি</h4>
+                <table style="width:100%; border-collapse: collapse; text-align: left; font-size: 13px;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid var(--border); color: #666;">
+                            <th style="padding: 6px 4px;">তারিখ</th>
+                            <th style="padding: 6px 4px; text-align: right;">ভিজিটর সংখ্যা</th>
+                        </tr>
+                    </thead>
+                    <tbody id="visitorHistoryBody">
+                        <tr><td colspan="2" style="padding: 8px; text-align: center; color: #888;">ডাটা লোড হচ্ছে...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- USER FEEDBACK MESSAGES IN ADMIN -->
+            <div class="cardTitle" style="margin-top:25px">📨 ইউজারদের পাঠানো মতামত / ফিডব্যাক</div>
+            <div id="adminFeedbackList"><div class="hint">ফিডব্যাক লোড হচ্ছে...</div></div>
+
+            <!-- UNLIMITED AD MANAGEMENT -->
+            <div class="cardTitle" style="margin-top:25px">📢 আনলিমিটেড বিজ্ঞাপন ম্যানেজ করুন</div>
+            <div class="field" style="margin-top:8px">
+                <label class="label">বিজ্ঞাপনটি কোথায় দেখাবে?</label>
+                <select id="adminAdPosition">
+                    <option value="banner">Web Banner (ওয়েবের মাঝে)</option>
+                    <option value="popup">Popup Modal (প্রবেশের সময়)</option>
+                    <option value="both">উভয় জায়গায় (Both)</option>
+                </select>
+            </div>
+            <div class="field">
+                <label class="label">বিজ্ঞাপনের ছবি (গ্যালারি থেকে সিলেক্ট করুন)</label>
+                <input id="adminAdFile" type="file" accept="image/*">
+            </div>
+            <div class="field">
+                <label class="label">বিজ্ঞাপনের টেক্সট বা ক্যাপশন</label>
+                <input id="adminAdText" placeholder="যেমন: নতুন অফার ৫০% ছাড়!">
+            </div>
+            <div class="field">
+                <label class="label">ক্লিক করলে যে লিংকে যাবে (Optional URL)</label>
+                <input id="adminAdLink" placeholder="https://example.com">
+            </div>
+            <button class="secondary" style="margin-top:8px" onclick="addNewAd()">+ নতুন বিজ্ঞাপন যোগ করুন</button>
+            <div id="adMsg"></div>
+
+            <div class="cardTitle" style="margin-top:18px">📋 বিজ্ঞাপনের তালিকা</div>
+            <div id="adminAdsContainer"></div>
+
+            <!-- SETTINGS -->
+            <div style="margin-top:25px">
+                <label class="label">Website Name</label>
+                <input id="adminName">
+                <label class="label" style="margin-top:8px">Owner Name</label>
+                <input id="adminOwner" value="Raju Ahmmed" readonly>
+                <button class="primary" style="margin-top:10px" onclick="saveSettings()">Save Website Settings</button>
+                <div id="settingsMsg"></div>
+            </div>
+
+            <!-- LOCATIONS & ROUTES -->
+            <div class="cardTitle" style="margin-top:25px">📍 জায়গা যোগ করুন</div>
+            <input id="newLocation" style="margin-top:8px" placeholder="যেমন: দিনাজপুর নতুন বাজার">
+            <button class="secondary" style="margin-top:8px" onclick="addLocation()">+ নতুন জায়গা যোগ করুন</button>
+            <div id="locationMsg"></div>
+
+            <div class="cardTitle" style="margin-top:18px">📋 জায়গার তালিকা</div>
+            <div id="locationEditor"></div>
+
+            <div class="cardTitle" style="margin-top:25px">🛣️ নতুন রুট যোগ করুন</div>
+            <div class="field">
+                <label class="label">যাত্রা শুরু</label>
+                <select id="newRouteFrom"></select>
+            </div>
+            <div class="field">
+                <label class="label">গন্তব্য</label>
+                <select id="newRouteTo"></select>
+            </div>
+            <div class="adminGrid">
+                <div>
+                    <label class="label">শেয়ার ভাড়া</label>
+                    <input id="newShareFare" type="number" min="0" placeholder="৳">
+                </div>
+                <div>
+                    <label class="label">রিজার্ভ ভাড়া</label>
+                    <input id="newReserveFare" type="number" min="0" placeholder="৳">
+                </div>
+            </div>
+            <button class="secondary" style="margin-top:8px" onclick="addRoute()">+ নতুন রুট যোগ করুন</button>
+            <div id="routeMsg"></div>
+
+            <div class="cardTitle" style="margin-top:18px">🛣️ রুট তালিকা</div>
+            <div id="routeEditor"></div>
+        </section>
+
+        <footer>© 2026 <span id="footerName">দিনাজপুর অটো ভাড়া গাইড</span></footer>
     </div>
 
-    <button class="primary" onclick="showFare()">ভাড়া দেখুন</button>
-  </section>
-
-  <!-- RESULT -->
-  <section class="card result" id="result">
-    <div class="resultHead">
-      <div class="routeName" id="routeName"></div>
-      <span class="verified">✓ ভেরিফাইড</span>
-    </div>
-
-    <div class="fares">
-      <div class="fare">
-        <small>শেয়ার ভাড়া</small>
-        <b id="shareFare">—</b>
-      </div>
-      <div class="fare">
-        <small>রিজার্ভ ভাড়া</small>
-        <b id="reserveFare">—</b>
-      </div>
-    </div>
-    
-    <button class="secondary" style="margin-top:10px;" onclick="shareRouteFare()">📲 ভাড়া শেয়ার / কপি করুন</button>
-
-    <div class="hint">ভাড়া স্থানীয় পরিস্থিতি অনুযায়ী সামান্য পরিবর্তিত হতে পারে।</div>
-  </section>
-
-  <!-- CUSTOM KM -->
-  <section class="card" id="custom" style="display:none">
-    <div class="cardTitle">🧮 কাস্টম কিমি হিসাব</div>
-    <div class="adminGrid">
-      <div>
-        <label class="label">দূরত্ব (কিমি)</label>
-        <input id="km" type="number" min="0" step=".1" placeholder="যেমন 5">
-      </div>
-      <div>
-        <label class="label">প্রতি কিমি (৳)</label>
-        <input id="rate" type="number" min="0" value="12">
-      </div>
-    </div>
-    <button class="primary" style="margin-top:10px" onclick="calculateKm()">হিসাব করুন</button>
-
-    <div id="kmResult" class="fare" style="display:none;margin-top:10px">
-      <small>আনুমানিক ভাড়া</small>
-      <b id="kmFare">৳0</b>
-    </div>
-  </section>
-
-  <!-- USER FEEDBACK FORM -->
-  <section class="card" id="feedback" style="display:none">
-    <div class="cardTitle">💬 আপনার মূল্যবান মতামত বা নতুন রুট জানান</div>
-    <div class="field">
-      <label class="label">আপনার নাম (ঐচ্ছিক)</label>
-      <input id="fbName" placeholder="যেমন: শিফা">
-    </div>
-    <div class="field">
-      <label class="label">মোবাইল / ইমেইল (ঐচ্ছিক)</label>
-      <input id="fbContact" placeholder="যোগাযোগের তথ্য">
-    </div>
-    <div class="field">
-      <label class="label">মতামত / নতুন ভাড়ার তথ্য</label>
-      <textarea id="fbMessage" placeholder="কোনো রুটের ভাড়া ভুল থাকলে বা নতুন কোনো রুট যোগ করতে চাইলে লিখুন..."></textarea>
-    </div>
-    <button class="primary" onclick="sendFeedback()">মতামত পাঠান</button>
-    <div id="userFbMsg"></div>
-  </section>
-
-  <!-- REAL VISITOR STATS -->
-  <section class="card">
-    <div class="live">
-      <span class="liveDot"></span>
-      <div>
-        <div class="liveTitle">লাইভ একটিভ</div>
-        <div class="liveSub">বর্তমানে ওয়েবে আছেন</div>
-      </div>
-      <div class="liveNum" id="onlineVisitors">1</div>
-    </div>
-
-    <div class="visitor">
-      <div class="visitorBox">
-        <small>আজকের ভিজিটর</small>
-        <b id="todayVisitors">0</b>
-      </div>
-      <div class="visitorBox">
-        <small>মোট ভিজিটর</small>
-        <b id="totalVisitors">0</b>
-      </div>
-    </div>
-  </section>
-
-  <!-- LOGIN PANEL (SECRET) -->
-  <section class="card login" id="loginPanel">
-    <div class="cardTitle">🔐 Admin Login</div>
-    <label class="label">Email</label>
-    <input id="loginEmail" type="email" placeholder="admin@example.com">
-    <label class="label" style="margin-top:8px">Password</label>
-    <input id="loginPassword" type="password" placeholder="Password">
-    <button class="primary" style="margin-top:10px" onclick="login()">Login</button>
-    <div id="loginMsg"></div>
-  </section>
-
-  <!-- ADMIN PANEL -->
-  <section class="card admin" id="adminPanel">
-    <div class="cardTitle">⚙️ Admin Panel</div>
-    <div class="hint" id="adminUser"></div>
-    <button class="secondary" style="margin-top:8px" onclick="logout()">Logout</button>
-
-    <div class="cardTitle" style="margin-top:20px">📊 ভিজিটর ট্র্যাকিং (Real Database Stats)</div>
-    <div class="visitor">
-      <div class="visitorBox">
-        <small>আজকের ভিজিটর</small>
-        <b id="adminTodayVisitors">0</b>
-      </div>
-      <div class="visitorBox">
-        <small>লাইভ একটিভ</small>
-        <b id="adminLiveVisitors">1</b>
-      </div>
-      <div class="visitorBox" style="grid-column: span 2;">
-        <small>মোট ভিজিটর</small>
-        <b id="adminTotalVisitors">0</b>
-      </div>
-    </div>
-
-    <!-- DATE-WISE VISITOR HISTORY TABLE -->
-    <div style="background: rgba(8,127,98,0.08); padding: 12px; border-radius: 12px; margin-top: 15px; border: 1px solid var(--border);">
-      <h4 style="margin: 0 0 10px 0; color: var(--primary-dark); font-weight: 800; font-size: 13px;">📅 তারিখ অনুযায়ী ভিজিটর হিস্ট্রি</h4>
-      <table style="width:100%; border-collapse: collapse; text-align: left; font-size: 13px;">
-        <thead>
-          <tr style="border-bottom: 1px solid var(--border); color: #666;">
-            <th style="padding: 6px 4px;">তারিখ</th>
-            <th style="padding: 6px 4px; text-align: right;">ভিজিটর সংখ্যা</th>
-          </tr>
-        </thead>
-        <tbody id="visitorHistoryBody">
-          <tr><td colspan="2" style="padding: 8px; text-align: center; color: #888;">ডাটা লোড হচ্ছে...</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- USER FEEDBACK MESSAGES IN ADMIN -->
-    <div class="cardTitle" style="margin-top:25px">📨 ইউজারদের পাঠানো মতামত / ফিডব্যাক</div>
-    <div id="adminFeedbackList"><div class="hint">ফিডব্যাক লোড হচ্ছে...</div></div>
-
-    <!-- UNLIMITED AD MANAGEMENT -->
-    <div class="cardTitle" style="margin-top:25px">📢 আনলিমিটেড বিজ্ঞাপন ম্যানেজ করুন</div>
-    <div class="field" style="margin-top:8px">
-      <label class="label">বিজ্ঞাপনটি কোথায় দেখাবে?</label>
-      <select id="adminAdPosition">
-        <option value="banner">Web Banner (ওয়েবের মাঝে)</option>
-        <option value="popup">Popup Modal (প্রবেশের সময়)</option>
-        <option value="both">উভয় জায়গায় (Both)</option>
-      </select>
-    </div>
-    <div class="field">
-      <label class="label">বিজ্ঞাপনের ছবি (গ্যালারি থেকে সিলেক্ট করুন)</label>
-      <input id="adminAdFile" type="file" accept="image/*">
-    </div>
-    <div class="field">
-      <label class="label">বিজ্ঞাপনের টেক্সট বা ক্যাপশন</label>
-      <input id="adminAdText" placeholder="যেমন: নতুন অফার ৫০% ছাড়!">
-    </div>
-    <div class="field">
-      <label class="label">ক্লিক করলে যে লিংকে যাবে (Optional URL)</label>
-      <input id="adminAdLink" placeholder="https://example.com">
-    </div>
-    <button class="secondary" style="margin-top:8px" onclick="addNewAd()">+ নতুন বিজ্ঞাপন যোগ করুন</button>
-    <div id="adMsg"></div>
-
-    <div class="cardTitle" style="margin-top:18px">📋 বিজ্ঞাপনের তালিকা</div>
-    <div id="adminAdsContainer"></div>
-
-    <!-- SETTINGS -->
-    <div style="margin-top:25px">
-      <label class="label">Website Name</label>
-      <input id="adminName">
-      <label class="label" style="margin-top:8px">Owner Name</label>
-      <input id="adminOwner" value="Raju Ahmmed" readonly>
-      <button class="primary" style="margin-top:10px" onclick="saveSettings()">Save Website Settings</button>
-      <div id="settingsMsg"></div>
-    </div>
-
-    <!-- LOCATIONS & ROUTES -->
-    <div class="cardTitle" style="margin-top:25px">📍 জায়গা যোগ করুন</div>
-    <input id="newLocation" style="margin-top:8px" placeholder="যেমন: দিনাজপুর নতুন বাজার">
-    <button class="secondary" style="margin-top:8px" onclick="addLocation()">+ নতুন জায়গা যোগ করুন</button>
-    <div id="locationMsg"></div>
-
-    <div class="cardTitle" style="margin-top:18px">📋 জায়গার তালিকা</div>
-    <div id="locationEditor"></div>
-
-    <div class="cardTitle" style="margin-top:25px">🛣️ নতুন রুট যোগ করুন</div>
-    <div class="field">
-      <label class="label">যাত্রা শুরু</label>
-      <select id="newRouteFrom"></select>
-    </div>
-    <div class="field">
-      <label class="label">গন্তব্য</label>
-      <select id="newRouteTo"></select>
-    </div>
-    <div class="adminGrid">
-      <div>
-        <label class="label">শেয়ার ভাড়া</label>
-        <input id="newShareFare" type="number" min="0" placeholder="৳">
-      </div>
-      <div>
-        <label class="label">রিজার্ভ ভাড়া</label>
-        <input id="newReserveFare" type="number" min="0" placeholder="৳">
-      </div>
-    </div>
-    <button class="secondary" style="margin-top:8px" onclick="addRoute()">+ নতুন রুট যোগ করুন</button>
-    <div id="routeMsg"></div>
-
-    <div class="cardTitle" style="margin-top:18px">🛣️ রুট তালিকা</div>
-    <div id="routeEditor"></div>
-  </section>
-
-  <footer>© 2026 <span id="footerName">দিনাজপুর অটো ভাড়া গাইড</span></footer>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-// ANTI-COPY JAVASCRIPT LOGIC
-document.addEventListener('keydown', function(e) {
-  if (e.ctrlKey && (e.key === 'c' || e.key === 'C' || e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S' || e.key === 'a' || e.key === 'A')) {
-    e.preventDefault();
-  }
-  if (e.keyCode === 123) {
-    e.preventDefault();
-  }
-});
-
-const SUPABASE_URL = "https://wgjoeyxrkvojjpdqyppl.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indnam9leXhya3ZvampwZHF5cHBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAyNTI3NTIsImV4cCI6MjEwNTgyODc1Mn0.BVBuNgJFEKUCuyUT42DwpbKBHFpdmi4SUpzd4CaRf84";
-
-let sb = null;
-if (typeof supabase !== 'undefined') {
-  sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-}
-
-const $ = id => document.getElementById(id);
-
-const defaultLocations = [
-  "দিনাজপুর জিরো পয়েন্ট", "দিনাজপুর রেলওয়ে স্টেশন", "দিনাজপুর বাস টার্মিনাল",
-  "বাহাদুর বাজার", "লিলির মোড়", "মডার্ন মোড়", "চৌরঙ্গী", "বালুবাড়ী", "পুলহাট",
-  "মুন্সিপাড়া", "গণেশতলা", "কালিতলা", "নিউ টাউন", "বড়মাঠ", "কোর্ট চত্বর",
-  "জেলা প্রশাসকের কার্যালয়", "জেলা জজ কোর্ট", "দিনাজপুর সদর হাসপাতাল",
-  "দিনাজপুর মেডিকেল কলেজ হাসপাতাল", "এম আব্দুর রহিম মেডিকেল কলেজ",
-  "জিয়া হার্ট ফাউন্ডেশন", "দিনাজপুর সরকারি কলেজ", "দিনাজপুর সরকারি মহিলা কলেজ",
-  "দিনাজপুর জিলা স্কুল", "দিনাজপুর সরকারি বালিকা উচ্চ বিদ্যালয়",
-  "দিনাজপুর পলিটেকনিক ইনস্টিটিউট", "পোস্ট অফিস", "দিনাজপুর প্রেস ক্লাব",
-  "রাজবাড়ী", "কাচারী বাজার", "বিরল মোড়", "সুইহারী", "উত্তর বালুবাড়ী",
-  "রামনগর", "মালদহপট্টি", "মিশন রোড", "লালবাগ", "ফুলবাড়ী বাসস্ট্যান্ড",
-  "উপশহর", "ঘোড়াঘাট রোড", "ঢাকাইয়া পট্টি", "স্টেশন রোড", "মিশন হাসপাতাল",
-  "চেহেলগাজী মাজার", "রামসাগর"
-];
-
-let data = {
-  siteName:"দিনাজপুর অটো ভাড়া গাইড",
-  owner:"Raju Ahmmed",
-  locations:defaultLocations.map(name => ({name})),
-  routes:[]
-};
-
-function esc(v){
-  return String(v ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
-}
-
-function toggleDark(){
-  document.body.classList.toggle("dark");
-  localStorage.setItem("dinajpurDark", document.body.classList.contains("dark"));
-}
-if(localStorage.getItem("dinajpurDark")==="true") document.body.classList.add("dark");
-
-let secretTapCount = 0;
-let secretTapTimer = null;
-function secretTapTrigger() {
-  secretTapCount++;
-  clearTimeout(secretTapTimer);
-  if (secretTapCount >= 5) {
-    secretTapCount = 0;
-    openLogin();
-  } else {
-    secretTapTimer = setTimeout(() => {
-      secretTapCount = 0;
-    }, 2000);
-  }
-}
-
-/* REAL UNIQUE VISITOR TRACKING (FIXED BUG: LOCALSTORAGE + COOKIE CHECK) */
-function getCookie(name) {
-  let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-  if (match) return match[2];
-  return null;
-}
-
-function setCookie(name, value, hours) {
-  let date = new Date();
-  date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
-  document.cookie = name + "=" + value + "; expires=" + date.toUTCString() + "; path=/";
-}
-
-async function trackRealVisitor() {
-  const todayStr = new Date().toISOString().split('T')[0];
-  
-  // Checking both LocalStorage and Cookie to prevent duplicate tracking on refresh or preview iframe
-  const alreadyVisited = localStorage.getItem('dinajpur_visited_date') === todayStr || getCookie('dinajpur_visited_today');
-
-  if (sb && !alreadyVisited) {
-    try {
-      await sb.from('page_visits').insert([{ visit_date: todayStr }]);
-      localStorage.setItem('dinajpur_visited_date', todayStr);
-      setCookie('dinajpur_visited_today', 'true', 24);
-    } catch (e) {
-      console.log("Visit Insert Error:", e);
-    }
-  }
-
-  if (sb) {
-    try {
-      const [todayRes, totalRes] = await Promise.all([
-        sb.from('page_visits').select('id', { count: 'exact', head: true }).eq('visit_date', todayStr),
-        sb.from('page_visits').select('id', { count: 'exact', head: true })
-      ]);
-
-      const todayCount = todayRes.count ?? 0;
-      const totalCount = totalRes.count ?? 0;
-
-      if ($('todayVisitors')) $('todayVisitors').textContent = todayCount;
-      if ($('totalVisitors')) $('totalVisitors').textContent = totalCount;
-      if ($('adminTodayVisitors')) $('adminTodayVisitors').textContent = todayCount;
-      if ($('adminTotalVisitors')) $('adminTotalVisitors').textContent = totalCount;
-    } catch (e) {
-      console.log("Fetch Visit Error:", e);
-    }
-  }
-}
-
-/* LOAD DATE-WISE VISITOR HISTORY */
-async function loadVisitorHistory() {
-  const tbody = $('visitorHistoryBody');
-  if (!tbody || !sb) return;
-
-  try {
-    const { data, error } = await sb.from('page_visits').select('visit_date');
-    if (error) throw error;
-
-    if (!data || data.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="2" style="padding: 8px; text-align: center; color: #888;">কোনো ডাটা পাওয়া যায়নি</td></tr>`;
-      return;
-    }
-
-    const countsByDate = {};
-    data.forEach(row => {
-      const d = row.visit_date;
-      if (d) countsByDate[d] = (countsByDate[d] || 0) + 1;
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+    // ANTI-COPY JAVASCRIPT LOGIC
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && (e.key === 'c' || e.key === 'C' || e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S' || e.key === 'a' || e.key === 'A')) {
+            e.preventDefault();
+        }
+        if (e.keyCode === 123) {
+            e.preventDefault();
+        }
     });
 
-    const sortedDates = Object.keys(countsByDate).sort((a, b) => new Date(b) - new Date(a));
+    const SUPABASE_URL = "https://wgjoeyxrkvojjpdqyppl.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indnam9leXhya3ZvampwZHF5cHBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAyNTI3NTIsImV4cCI6MjEwNTgyODc1Mn0.BVBuNgJFEKUCuyUT42DwpbKBHFpdmi4SUpzd4CaRf84";
 
-    tbody.innerHTML = sortedDates.map(date => `
-      <tr style="border-bottom: 1px solid var(--border);">
-        <td style="padding: 6px 4px; font-weight:600;">${date}</td>
-        <td style="padding: 6px 4px; text-align: right; color: var(--primary); font-weight: bold;">${countsByDate[date]} জন</td>
-      </tr>
-    `).join('');
-  } catch (err) {
-    console.error("Visitor history error:", err);
-    tbody.innerHTML = `<tr><td colspan="2" style="padding: 8px; text-align: center; color: #ff6b6b;">ডাটা লোড করতে সমস্যা হয়েছে</td></tr>`;
-  }
-}
+    let sb = null;
+    if (typeof supabase !== 'undefined') {
+        sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    }
 
-/* UNLIMITED ADS */
-function getStoredAds() {
-  try {
-    return JSON.parse(localStorage.getItem('dinajpur_ads_list') || '[]');
-  } catch (e) {
-    return [];
-  }
-}
+    const $ = id => document.getElementById(id);
 
-function loadAdSettings() {
-  const ads = getStoredAds();
-  const popupAds = ads.filter(a => a.position === 'popup' || a.position === 'both');
-  const popupEl = $('entryAd');
-  const popupSpace = $('popupAdSpace');
+    const defaultLocations = [
+        "দিনাজপুর জিরো পয়েন্ট", "দিনাজপুর রেলওয়ে স্টেশন", "দিনাজপুর বাস টার্মিনাল", "বাহাদুর বাজার", 
+        "লিলির মোড়", "মডার্ন মোড়", "চৌরঙ্গী", "বালুবাড়ী", "পুলহাট", "মুন্সিপাড়া", "গণেশতলা", 
+        "কালিতলা", "নিউ টাউন", "বড়মাঠ", "কোর্ট চত্বর", "জেলা প্রশাসকের কার্যালয়", "জেলা জজ কোর্ট", 
+        "দিনাজপুর সদর হাসপাতাল", "দিনাজপুর মেডিকেল কলেজ হাসপাতাল", "এম আব্দুর রহিম মেডিকেল কলেজ", 
+        "জিয়া হার্ট ফাউন্ডেশন", "দিনাজপুর সরকারি কলেজ", "দিনাজপুর সরকারি মহিলা কলেজ", "দিনাজপুর জিলা স্কুল", 
+        "দিনাজপুর সরকারি বালিকা উচ্চ বিদ্যালয়", "দিনাজপুর পলিটেকনিক ইনস্টিটিউট", "পোস্ট অফিস", 
+        "দিনাজপুর প্রেস ক্লাব", "রাজবাড়ী", "কাচারী বাজার", "বিরল মোড়", "সুইহারী", "উত্তর বালুবাড়ী", 
+        "রামনগর", "মালদহপট্টি", "মিশন রোড", "লালবাগ", "ফুলবাড়ী বাসস্ট্যান্ড", "উপশহর", "ঘোড়াঘাট রোড", 
+        "ঢাকাইয়া পট্টি", "স্টেশন রোড", "মিশন হাসপাতাল", "চেহেলগাজী মাজার", "রামসাগর"
+    ];
 
-  if (popupAds.length > 0 && popupEl && popupSpace) {
-    popupSpace.innerHTML = popupAds.map(ad => `
-      <div style="margin-bottom:10px;">
-        <a href="${esc(ad.link || '#')}" target="_blank" style="text-decoration:none; color:inherit; display:block;">
-          ${ad.img ? `<img src="${ad.img}" style="max-width:100%; max-height:180px; border-radius:8px; display:block; margin:0 auto 6px;">` : ''}
-          <p style="margin:0; font-weight:700;">${esc(ad.text || '')}</p>
-        </a>
-      </div>
-    `).join('');
-    popupEl.classList.remove('hidden');
-  } else if (popupEl) popupEl.classList.add('hidden');
-
-  const bannerAds = ads.filter(a => a.position === 'banner' || a.position === 'both');
-  const inlineCard = $('inlineAdCard');
-  const bannerList = $('bannerAdsList');
-
-  if (bannerAds.length > 0 && inlineCard && bannerList) {
-    inlineCard.style.display = 'block';
-    bannerList.innerHTML = bannerAds.map(ad => `
-      <div class="singleBannerAd">
-        <a href="${esc(ad.link || '#')}" target="_blank" style="text-decoration:none; color:inherit; display:block;">
-          ${ad.img ? `<img src="${ad.img}" style="max-width:100%; max-height:180px; border-radius:8px; display:block; margin:0 auto 6px;">` : ''}
-          <p style="margin:0; font-weight:700; color:var(--primary-dark); font-size:13px;">${esc(ad.text || '')}</p>
-        </a>
-      </div>
-    `).join('');
-  } else if (inlineCard) inlineCard.style.display = 'none';
-
-  renderAdminAdsList();
-}
-
-function addNewAd() {
-  const fileInput = $('adminAdFile');
-  const adText = $('adminAdText').value.trim();
-  const adLink = $('adminAdLink').value.trim();
-  const adPos = $('adminAdPosition').value;
-  const msg = $('adMsg');
-
-  const saveAd = (imgUrl) => {
-    const ads = getStoredAds();
-    ads.push({
-      id: Date.now(),
-      img: imgUrl || '',
-      text: adText,
-      link: adLink,
-      position: adPos
-    });
-    localStorage.setItem('dinajpur_ads_list', JSON.stringify(ads));
-    msg.className = "success";
-    msg.textContent = "বিজ্ঞাপন যোগ হয়েছে!";
-    $('adminAdFile').value = "";
-    $('adminAdText').value = "";
-    $('adminAdLink').value = "";
-    loadAdSettings();
-  };
-
-  if (fileInput.files && fileInput.files[0]) {
-    const reader = new FileReader();
-    reader.onload = e => {
-      const img = new Image();
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        const scale = 300 / img.width;
-        canvas.width = img.width > 300 ? 300 : img.width;
-        canvas.height = img.width > 300 ? img.height * scale : img.height;
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        saveAd(canvas.toDataURL('image/jpeg', 0.5));
-      };
-      img.src = e.target.result;
+    let data = {
+        siteName:"দিনাজপুর অটো ভাড়া গাইড",
+        owner:"Raju Ahmmed",
+        locations:defaultLocations.map(name => ({name})),
+        routes:[]
     };
-    reader.readAsDataURL(fileInput.files[0]);
-  } else saveAd(null);
-}
 
-function renderAdminAdsList() {
-  const box = $('adminAdsContainer');
-  if (!box) return;
-  const ads = getStoredAds();
+    function esc(v){
+        return String(v ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    }
 
-  if (!ads.length) {
-    box.innerHTML = `<div class="hint">কোনো বিজ্ঞাপন নেই।</div>`;
-    return;
-  }
+    function toggleDark(){
+        document.body.classList.toggle("dark");
+        localStorage.setItem("dinajpurDark", document.body.classList.contains("dark"));
+    }
 
-  box.innerHTML = ads.map((ad, idx) => `
-    <div class="adItemAdmin">
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <b>অ্যাড #${idx + 1} (${ad.position})</b>
-        <button class="smallDelete" onclick="deleteAd(${ad.id})">Delete</button>
-      </div>
-      ${ad.img ? `<img src="${ad.img}" style="max-width:80px; max-height:50px; margin-top:4px; border-radius:4px;">` : ''}
-      <div style="font-size:12px;">${esc(ad.text)}</div>
-    </div>
-  `).join('');
-}
+    if(localStorage.getItem("dinajpurDark")==="true") document.body.classList.add("dark");
 
-function deleteAd(id) {
-  let ads = getStoredAds().filter(a => a.id !== id);
-  localStorage.setItem('dinajpur_ads_list', JSON.stringify(ads));
-  loadAdSettings();
-}
+    let secretTapCount = 0;
+    let secretTapTimer = null;
+    function secretTapTrigger() {
+        secretTapCount++;
+        clearTimeout(secretTapTimer);
+        if (secretTapCount >= 5) {
+            secretTapCount = 0;
+            openLogin();
+        } else {
+            secretTapTimer = setTimeout(() => {
+                secretTapCount = 0;
+            }, 2000);
+        }
+    }
 
-function closeEntryAd(){
-  $('entryAd')?.classList.add("hidden");
-}
+    /* REAL UNIQUE VISITOR TRACKING */
+    function getCookie(name) {
+        let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        if (match) return match[2];
+        return null;
+    }
 
-function switchTab(type){
-  $("popular").style.display = type==="popular" ? "block" : "none";
-  $("custom").style.display = type==="custom" ? "block" : "none";
-  $("feedback").style.display = type==="feedback" ? "block" : "none";
+    function setCookie(name, value, hours) {
+        let date = new Date();
+        date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
+        document.cookie = name + "=" + value + "; expires=" + date.toUTCString() + "; path=/";
+    }
 
-  $("popularTab").classList.toggle("active", type==="popular");
-  $("customTab").classList.toggle("active", type==="custom");
-  $("feedbackTab").classList.toggle("active", type==="feedback");
-}
+    async function trackRealVisitor() {
+        const todayStr = new Date().toISOString().split('T')[0];
+        const alreadyVisited = localStorage.getItem('dinajpur_visited_date') === todayStr || getCookie('dinajpur_visited_today');
+        
+        if (sb && !alreadyVisited) {
+            try {
+                await sb.from('page_visits').insert([{ visit_date: todayStr }]);
+                localStorage.setItem('dinajpur_visited_date', todayStr);
+                setCookie('dinajpur_visited_today', 'true', 24);
+            } catch (e) {
+                console.log("Visit Insert Error:", e);
+            }
+        }
 
-/* INDEPENDENT LOCATION SEARCH FILTERS */
-function filterFromLocations(){
-  const query = $('fromSearch').value.toLowerCase().trim();
-  const currentFrom = $("from").value;
-  const filtered = data.locations.filter(loc => {
-    const name = (loc.name || loc).toLowerCase();
-    return name.includes(query);
-  });
-  $("from").innerHTML = filtered.map(x => {
-    const name = x.name || x;
-    return `<option value="${esc(name)}">${esc(name)}</option>`;
-  }).join("");
-  if (filtered.some(x => (x.name || x) === currentFrom)) {
-    $("from").value = currentFrom;
-  }
-}
+        if (sb) {
+            try {
+                const [todayRes, totalRes] = await Promise.all([
+                    sb.from('page_visits').select('id', { count: 'exact', head: true }).eq('visit_date', todayStr),
+                    sb.from('page_visits').select('id', { count: 'exact', head: true })
+                ]);
+                const todayCount = todayRes.count ?? 0;
+                const totalCount = totalRes.count ?? 0;
 
-function filterToLocations(){
-  const query = $('toSearch').value.toLowerCase().trim();
-  const currentTo = $("to").value;
-  const filtered = data.locations.filter(loc => {
-    const name = (loc.name || loc).toLowerCase();
-    return name.includes(query);
-  });
-  $("to").innerHTML = filtered.map(x => {
-    const name = x.name || x;
-    return `<option value="${esc(name)}">${esc(name)}</option>`;
-  }).join("");
-  if (filtered.some(x => (x.name || x) === currentTo)) {
-    $("to").value = currentTo;
-  }
-}
+                if ($('todayVisitors')) $('todayVisitors').textContent = todayCount;
+                if ($('totalVisitors')) $('totalVisitors').textContent = totalCount;
+                if ($('adminTodayVisitors')) $('adminTodayVisitors').textContent = todayCount;
+                if ($('adminTotalVisitors')) $('adminTotalVisitors').textContent = totalCount;
+            } catch (e) {
+                console.log("Fetch Visit Error:", e);
+            }
+        }
+    }
 
-function render(){
-  $("siteName").textContent = data.siteName;
-  $("footerName").textContent = data.siteName;
+    /* LOAD DATE-WISE VISITOR HISTORY */
+    async function loadVisitorHistory() {
+        const tbody = $('visitorHistoryBody');
+        if (!tbody || !sb) return;
+        try {
+            const { data, error } = await sb.from('page_visits').select('visit_date');
+            if (error) throw error;
+            if (!data || data.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="2" style="padding: 8px; text-align: center; color: #888;">কোনো ডাটা পাওয়া যায়নি</td></tr>`;
+                return;
+            }
+            const countsByDate = {};
+            data.forEach(row => {
+                const d = row.visit_date;
+                if (d) countsByDate[d] = (countsByDate[d] || 0) + 1;
+            });
+            const sortedDates = Object.keys(countsByDate).sort((a, b) => new Date(b) - new Date(a));
+            tbody.innerHTML = sortedDates.map(date => `
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 6px 4px; font-weight:600;">${date}</td>
+                    <td style="padding: 6px 4px; text-align: right; color: var(--primary); font-weight: bold;">${countsByDate[date]} জন</td>
+                </tr>
+            `).join('');
+        } catch (err) {
+            console.error("Visitor history error:", err);
+            tbody.innerHTML = `<tr><td colspan="2" style="padding: 8px; text-align: center; color: #ff6b6b;">ডাটা লোড করতে সমস্যা হয়েছে</td></tr>`;
+        }
+    }
 
-  filterFromLocations();
-  filterToLocations();
+    /* UNLIMITED ADS */
+    function getStoredAds() {
+        try {
+            return JSON.parse(localStorage.getItem('dinajpur_ads_list') || '[]');
+        } catch (e) {
+            return [];
+        }
+    }
 
-  const allOptions = data.locations.map(x=>`<option value="${esc(x.name||x)}">${esc(x.name||x)}</option>`).join("");
-  $("newRouteFrom").innerHTML = allOptions;
-  $("newRouteTo").innerHTML = allOptions;
+    function loadAdSettings() {
+        const ads = getStoredAds();
+        const popupAds = ads.filter(a => a.position === 'popup' || a.position === 'both');
+        const popupEl = $('entryAd');
+        const popupSpace = $('popupAdSpace');
 
-  renderLocations();
-  renderRoutes();
-}
+        if (popupAds.length > 0 && popupEl && popupSpace) {
+            popupSpace.innerHTML = popupAds.map(ad => `
+                <div style="margin-bottom:10px;">
+                    <a href="${esc(ad.link || '#')}" target="_blank" style="text-decoration:none; color:inherit; display:block;">
+                        ${ad.img ? `<img src="${ad.img}" style="max-width:100%; max-height:180px; border-radius:8px; display:block; margin:0 auto 6px;">` : ''}
+                        <p style="margin:0; font-weight:700;">${esc(ad.text || '')}</p>
+                    </a>
+                </div>
+            `).join('');
+            popupEl.classList.remove('hidden');
+        } else if (popupEl) {
+            popupEl.classList.add('hidden');
+        }
 
-async function loadData(){
-  loadAdSettings();
-  trackRealVisitor();
+        const bannerAds = ads.filter(a => a.position === 'banner' || a.position === 'both');
+        const inlineCard = $('inlineAdCard');
+        const bannerList = $('bannerAdsList');
 
-  if (!sb) { render(); return; }
+        if (bannerAds.length > 0 && inlineCard && bannerList) {
+            inlineCard.style.display = 'block';
+            bannerList.innerHTML = bannerAds.map(ad => `
+                <div class="singleBannerAd">
+                    <a href="${esc(ad.link || '#')}" target="_blank" style="text-decoration:none; color:inherit; display:block;">
+                        ${ad.img ? `<img src="${ad.img}" style="max-width:100%; max-height:180px; border-radius:8px; display:block; margin:0 auto 6px;">` : ''}
+                        <p style="margin:0; font-weight:700; color:var(--primary-dark); font-size:13px;">${esc(ad.text || '')}</p>
+                    </a>
+                </div>
+            `).join('');
+        } else if (inlineCard) {
+            inlineCard.style.display = 'none';
+        }
+        renderAdminAdsList();
+    }
 
-  try {
-    const [s,l,r] = await Promise.all([
-      sb.from("site_settings").select("*").eq("id",1).maybeSingle(),
-      sb.from("locations").select("*").order("name"),
-      sb.from("routes").select("*").order("id")
-    ]);
+    function addNewAd() {
+        const fileInput = $('adminAdFile');
+        const adText = $('adminAdText').value.trim();
+        const adLink = $('adminAdLink').value.trim();
+        const adPos = $('adminAdPosition').value;
+        const msg = $('adMsg');
 
-    if(s.data?.site_name) data.siteName = s.data.site_name;
+        const saveAd = (imgUrl) => {
+            const ads = getStoredAds();
+            ads.push({ id: Date.now(), img: imgUrl || '', text: adText, link: adLink, position: adPos });
+            localStorage.setItem('dinajpur_ads_list', JSON.stringify(ads));
+            msg.className = "success";
+            msg.textContent = "বিজ্ঞাপন যোগ হয়েছে!";
+            $('adminAdFile').value = "";
+            $('adminAdText').value = "";
+            $('adminAdLink').value = "";
+            loadAdSettings();
+        };
 
-    const dbLocs = (l.data || []).map(x => x.name).filter(Boolean);
-    data.locations = [...new Set([...dbLocs, ...defaultLocations])].map(name => ({ name }));
-    data.routes = r.data || [];
+        if (fileInput.files && fileInput.files[0]) {
+            const reader = new FileReader();
+            reader.onload = e => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    const scale = 300 / img.width;
+                    canvas.width = img.width > 300 ? 300 : img.width;
+                    canvas.height = img.width > 300 ? img.height * scale : img.height;
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    saveAd(canvas.toDataURL('image/jpeg', 0.5));
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        } else {
+            saveAd(null);
+        }
+    }
 
-    render();
-  } catch(e) {
-    render();
-  }
-}
+    function renderAdminAdsList() {
+        const box = $('adminAdsContainer');
+        if (!box) return;
+        const ads = getStoredAds();
+        if (!ads.length) {
+            box.innerHTML = `<div class="hint">কোনো বিজ্ঞাপন নেই।</div>`;
+            return;
+        }
+        box.innerHTML = ads.map((ad, idx) => `
+            <div class="adItemAdmin">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <b>অ্যাড #${idx + 1} (${ad.position})</b>
+                    <button class="smallDelete" onclick="deleteAd(${ad.id})">Delete</button>
+                </div>
+                ${ad.img ? `<img src="${ad.img}" style="max-width:80px; max-height:50px; margin-top:4px; border-radius:4px;">` : ''}
+                <div style="font-size:12px;">${esc(ad.text)}</div>
+            </div>
+        `).join('');
+    }
 
-function swapRoute(){
-  const a = $("from").value;
-  const b = $("to").value;
-  $('fromSearch').value = '';$('toSearch').value = '';
-  filterFromLocations();
-  filterToLocations();
-  $("from").value = b;
-  $("to").value = a;
-}
+    function deleteAd(id) {
+        let ads = getStoredAds().filter(a => a.id !== id);
+        localStorage.setItem('dinajpur_ads_list', JSON.stringify(ads));
+        loadAdSettings();
+    }
 
-function showFare(){
-  const a = $("from").value, b = $("to").value;
-  if(!a || !b || a===b) return alert("সঠিক রুট নির্বাচন করুন।");
+    function closeEntryAd(){
+        $('entryAd')?.classList.add("hidden");
+    }
 
-  const r = data.routes.find(x=>(x.from_location===a && x.to_location===b) || (x.from_location===b && x.to_location===a));
+    function switchTab(type){
+        $("popular").style.display = type==="popular" ? "block" : "none";
+        $("custom").style.display = type==="custom" ? "block" : "none";
+        $("feedback").style.display = type==="feedback" ? "block" : "none";
+        $("popularTab").classList.toggle("active", type==="popular");
+        $("customTab").classList.toggle("active", type==="custom");
+        $("feedbackTab").classList.toggle("active", type==="feedback");
+    }
 
-  $("result").style.display = "block";
-  $("routeName").textContent = a + " → " + b;
-  $("shareFare").textContent = r ? "৳" + r.share_fare : "তথ্য নেই";
-  $("reserveFare").textContent = r ? "৳" + r.reserve_fare : "তথ্য নেই";
-}
+    /* INDEPENDENT LOCATION SEARCH FILTERS */
+    function filterFromLocations(){
+        const query = $('fromSearch').value.toLowerCase().trim();
+        const currentFrom = $("from").value;
+        const filtered = data.locations.filter(loc => {
+            const name = (loc.name || loc).toLowerCase();
+            return name.includes(query);
+        });
+        $("from").innerHTML = filtered.map(x => {
+            const name = x.name || x;
+            return `<option value="${esc(name)}">${esc(name)}</option>`;
+        }).join("");
+        if (filtered.some(x => (x.name || x) === currentFrom)) {
+            $("from").value = currentFrom;
+        }
+    }
 
-/* SHARE / COPY FARE INFO */
-function shareRouteFare(){
-  const route = $("routeName").textContent;
-  const share = $("shareFare").textContent;
-  const reserve = $("reserveFare").textContent;
-  const text = `📍 ${data.siteName}\n🛣️ রুট: ${route}\n🚌 শেয়ার ভাড়া: ${share}\n🚕 রিজার্ভ ভাড়া: ${reserve}`;
+    function filterToLocations(){
+        const query = $('toSearch').value.toLowerCase().trim();
+        const currentTo = $("to").value;
+        const filtered = data.locations.filter(loc => {
+            const name = (loc.name || loc).toLowerCase();
+            return name.includes(query);
+        });
+        $("to").innerHTML = filtered.map(x => {
+            const name = x.name || x;
+            return `<option value="${esc(name)}">${esc(name)}</option>`;
+        }).join("");
+        if (filtered.some(x => (x.name || x) === currentTo)) {
+            $("to").value = currentTo;
+        }
+    }
 
-  if (navigator.share) {
-    navigator.share({ title: data.siteName, text: text }).catch(() => {});
-  } else {
-    navigator.clipboard.writeText(text).then(() => {
-      alert("ভাড়ার তথ্য কপি করা হয়েছে!");
+    function render(){
+        $("siteName").textContent = data.siteName;
+        $("footerName").textContent = data.siteName;
+        filterFromLocations();
+        filterToLocations();
+        const allOptions = data.locations.map(x=>`<option value="${esc(x.name||x)}">${esc(x.name||x)}</option>`).join("");
+        $("newRouteFrom").innerHTML = allOptions;
+        $("newRouteTo").innerHTML = allOptions;
+        renderLocations();
+        renderRoutes();
+    }
+
+    async function loadData(){
+        loadAdSettings();
+        trackRealVisitor();
+        if (!sb) {
+            render();
+            return;
+        }
+        try {
+            const [s,l,r] = await Promise.all([
+                sb.from("site_settings").select("*").eq("id",1).maybeSingle(),
+                sb.from("locations").select("*").order("name"),
+                sb.from("routes").select("*").order("id")
+            ]);
+            if(s.data?.site_name) data.siteName = s.data.site_name;
+            const dbLocs = (l.data || []).map(x => x.name).filter(Boolean);
+            data.locations = [...new Set([...dbLocs, ...defaultLocations])].map(name => ({ name }));
+            data.routes = r.data || [];
+            render();
+        } catch(e) {
+            render();
+        }
+    }
+
+    function swapRoute(){
+        const a = $("from").value;
+        const b = $("to").value;
+        $('fromSearch').value = '';$('toSearch').value = '';
+        filterFromLocations();
+        filterToLocations();
+        $("from").value = b;
+        $("to").value = a;
+    }
+
+    function showFare(){
+        const a = $("from").value, b = $("to").value;
+        if(!a || !b || a===b) return alert("সঠিক রুট নির্বাচন করুন।");
+        const r = data.routes.find(x=>(x.from_location===a && x.to_location===b) || (x.from_location===b && x.to_location===a));
+        $("result").style.display = "block";
+        $("routeName").textContent = a + " → " + b;
+        $("shareFare").textContent = r ? "৳" + r.share_fare : "তথ্য নেই";
+        $("reserveFare").textContent = r ? "৳" + r.reserve_fare : "তথ্য নেই";
+    }
+
+    /* SHARE / COPY FARE INFO */
+    function shareRouteFare(){
+        const route = $("routeName").textContent;
+        const share = $("shareFare").textContent;
+        const reserve = $("reserveFare").textContent;
+        const text = `📍 ${data.siteName}\n🛣️ রুট: ${route}\n🚌 শেয়ার ভাড়া: ${share}\n🚕 রিজার্ভ ভাড়া: ${reserve}`;
+        if (navigator.share) {
+            navigator.share({ title: data.siteName, text: text }).catch(() => {});
+        } else {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("ভাড়ার তথ্য কপি করা হয়েছে!");
+            });
+        }
+    }
+
+    function calculateKm(){
+        const km = Number($("km").value), rate = Number($("rate").value);
+        if(km>=0 && rate>=0) {
+            $("kmFare").textContent = "৳" + Math.round(km * rate);
+            $("kmResult").style.display = "block";
+        }
+    }
+
+    /* SEND USER FEEDBACK */
+    async function sendFeedback(){
+        const name = $('fbName').value.trim() || 'অজানা ইউজার';
+        const contact = $('fbContact').value.trim() || 'দেওয়া হয়নি';
+        const message = $('fbMessage').value.trim();
+        const msgEl = $('userFbMsg');
+
+        if (!message) {
+            msgEl.className = "error";
+            msgEl.textContent = "অনুগ্রহ করে আপনার মতামত বা মেসেজ লিখুন।";
+            return;
+        }
+
+        if (sb) {
+            try {
+                await sb.from('user_feedback').insert([{ name, contact, message }]);
+                msgEl.className = "success";
+                msgEl.textContent = "ধন্যবাদ! আপনার মতামত সফলভাবে পাঠানো হয়েছে।";
+                $('fbName').value = '';
+                $('fbContact').value = '';$('fbMessage').value = '';
+            } catch (err) {
+                msgEl.className = "error";
+                msgEl.textContent = "পাঠাতে সমস্যা হয়েছে। আবার চেষ্টা করুন।";
+            }
+        } else {
+            msgEl.className = "success";
+            msgEl.textContent = "ধন্যবাদ! আপনার মতামত সংরক্ষিত হয়েছে।";
+        }
+    }
+
+    /* LOAD FEEDBACK FOR ADMIN */
+    async function loadAdminFeedbacks(){
+        const box = $('adminFeedbackList');
+        if(!box || !sb) return;
+        try {
+            const { data: feedbacks, error } = await sb.from('user_feedback').select('*').order('created_at', { ascending: false });
+            if(error) throw error;
+            if(!feedbacks || feedbacks.length === 0){
+                box.innerHTML = `<div class="hint">কোনো ফিডব্যাক পাওয়া যায়নি।</div>`;
+                return;
+            }
+            box.innerHTML = feedbacks.map(fb => `
+                <div class="feedbackItem">
+                    <div style="display:flex; justify-content:space-between; font-weight:bold; color:var(--primary-dark);">
+                        <span>👤 ${esc(fb.name)}</span>
+                        <span style="font-size:10px; color:#888;">${new Date(fb.created_at || Date.now()).toLocaleDateString('bn-BD')}</span>
+                    </div>
+                    <div style="font-size:11px; color:#666; margin-top:2px;">📞 ${esc(fb.contact)}</div>
+                    <p style="margin:6px 0 0 0; font-size:13px;">${esc(fb.message)}</p>
+                </div>
+            `).join('');
+        } catch (e) {
+            box.innerHTML = `<div class="hint" style="color:#b52e35;">ফিডব্যাক লোড করতে ব্যর্থ হয়েছে (ডাটাবেস টেবিল 'user_feedback' চেক করুন)।</div>`;
+        }
+    }
+
+    function openLogin(){
+        $("loginPanel").style.display = "block";
+        $("adminPanel").style.display = "none";
+    }
+
+    async function login(){
+        if (!sb) return alert("Database Error!");
+        const {data:auth, error} = await sb.auth.signInWithPassword({
+            email:$("loginEmail").value,
+            password:$("loginPassword").value
+        });
+        if(error) return $("loginMsg").textContent = error.message;
+        checkAdmin(auth.user);
+    }
+
+    async function checkAdmin(user){
+        if (!sb || !user) return;
+        const {data:admin} = await sb.from("admin_users").select("user_id").eq("user_id", user.id).maybeSingle();
+        if(!admin) return $("loginMsg").textContent = "Access Denied";
+        $("loginPanel").style.display = "none";
+        $("adminPanel").style.display = "block";
+        $("adminUser").textContent = "Admin: " + user.email;
+        $("adminName").value = data.siteName;
+        loadAdSettings();
+        loadVisitorHistory();
+        loadAdminFeedbacks();
+        render();
+    }
+
+    async function logout(){
+        if (sb) await sb.auth.signOut();
+        $("adminPanel").style.display = "none";
+    }
+
+    async function saveSettings(){
+        if (!sb) return;
+        await sb.from("site_settings").update({
+            site_name: $("adminName").value,
+            owner_name: "Raju Ahmmed"
+        }).eq("id", 1);
+        loadData();
+    }
+
+    async function addLocation(){
+        if (!sb || !$("newLocation").value.trim()) return;
+        await sb.from("locations").insert({ name: $("newLocation").value.trim() });
+        $("newLocation").value = "";
+        loadData();
+    }
+
+    function renderLocations(){
+        $("locationEditor").innerHTML = data.locations.map((loc, index) => `
+            <div class="locationItem">
+                <div class="locationName">${index + 1}. ${esc(loc.name||loc)}</div>
+                ${loc.id ? `<button class="smallDelete" onclick="deleteLocation(${loc.id})">Delete</button>` : `<span style="font-size:10px;color:#888;">Default</span>`}
+            </div>`).join("");
+    }
+
+    async function deleteLocation(id){
+        if(sb && confirm("মুছে ফেলবেন?")) {
+            await sb.from("locations").delete().eq("id", id);
+            loadData();
+        }
+    }
+
+    async function addRoute(){
+        if(!sb) return;
+        await sb.from("routes").insert({
+            from_location: $("newRouteFrom").value,
+            to_location: $("newRouteTo").value,
+            share_fare: Number($("newShareFare").value),
+            reserve_fare: Number($("newReserveFare").value)
+        });
+        loadData();
+    }
+
+    function renderRoutes(){
+        $("routeEditor").innerHTML = data.routes.map(r => `
+            <div class="routeItem">
+                <div class="adminGrid">
+                    <input value="${esc(r.from_location)}" onchange="editRoute(${r.id},'from_location',this.value)">
+                    <input value="${esc(r.to_location)}" onchange="editRoute(${r.id},'to_location',this.value)">
+                </div>
+                <div class="adminGrid" style="margin-top:4px;">
+                    <input type="number" value="${r.share_fare}" onchange="editRoute(${r.id},'share_fare',this.value)">
+                    <input type="number" value="${r.reserve_fare}" onchange="editRoute(${r.id},'reserve_fare',this.value)">
+                </div>
+                <button class="danger" style="margin-top:4px;" onclick="deleteRoute(${r.id})">Delete</button>
+            </div>`).join("");
+    }
+
+    async function editRoute(id, key, value){
+        if (!sb) return;
+        const patch = {};
+        patch[key] = (key.includes('fare')) ? Number(value) : value;
+        await sb.from("routes").update(patch).eq("id", id);
+        loadData();
+    }
+
+    async function deleteRoute(id){
+        if(sb && confirm("রুট মুছে ফেলবেন?")) {
+            await sb.from("routes").delete().eq("id", id);
+            loadData();
+        }
+    }
+
+    async function setupPresence(){
+        if(!sb) return;
+        const channel = sb.channel("dinajpur-live", {
+            config: { presence: { key: crypto.randomUUID() } }
+        });
+        channel.on("presence", {event:"sync"}, () => {
+            const count = Object.keys(channel.presenceState()).length || 1;
+            if ($("onlineVisitors")) $("onlineVisitors").textContent = count;
+            if ($("adminLiveVisitors")) $("adminLiveVisitors").textContent = count;
+        });
+        await channel.subscribe(async s => {
+            if(s==="SUBSCRIBED") await channel.track({ online_at: new Date() });
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        loadData();
+        setupPresence();
     });
-  }
-}
-
-function calculateKm(){
-  const km = Number($("km").value), rate = Number($("rate").value);
-  if(km>=0 && rate>=0) {
-    $("kmFare").textContent = "৳" + Math.round(km * rate);
-    $("kmResult").style.display = "block";
-  }
-}
-
-/* SEND USER FEEDBACK */
-async function sendFeedback(){
-  const name = $('fbName').value.trim() || 'অজানা ইউজার';
-  const contact = $('fbContact').value.trim() || 'দেওয়া হয়নি';
-  const message = $('fbMessage').value.trim();
-  const msgEl = $('userFbMsg');
-
-  if (!message) {
-    msgEl.className = "error";
-    msgEl.textContent = "অনুগ্রহ করে আপনার মতামত বা মেসেজ লিখুন।";
-    return;
-  }
-
-  if (sb) {
-    try {
-      await sb.from('user_feedback').insert([{ name, contact, message }]);
-      msgEl.className = "success";
-      msgEl.textContent = "ধন্যবাদ! আপনার মতামত সফলভাবে পাঠানো হয়েছে।";
-      $('fbName').value = ''; $('fbContact').value = '';$('fbMessage').value = '';
-    } catch (err) {
-      msgEl.className = "error";
-      msgEl.textContent = "পাঠাতে সমস্যা হয়েছে। আবার চেষ্টা করুন।";
-    }
-  } else {
-    msgEl.className = "success";
-    msgEl.textContent = "ধন্যবাদ! আপনার মতামত সংরক্ষিত হয়েছে।";
-  }
-}
-
-/* LOAD FEEDBACK FOR ADMIN */
-async function loadAdminFeedbacks(){
-  const box = $('adminFeedbackList');
-  if(!box || !sb) return;
-
-  try {
-    const { data: feedbacks, error } = await sb.from('user_feedback').select('*').order('created_at', { ascending: false });
-    if(error) throw error;
-
-    if(!feedbacks || feedbacks.length === 0){
-      box.innerHTML = `<div class="hint">কোনো ফিডব্যাক পাওয়া যায়নি।</div>`;
-      return;
-    }
-
-    box.innerHTML = feedbacks.map(fb => `
-      <div class="feedbackItem">
-        <div style="display:flex; justify-content:space-between; font-weight:bold; color:var(--primary-dark);">
-          <span>👤 ${esc(fb.name)}</span>
-          <span style="font-size:10px; color:#888;">${new Date(fb.created_at || Date.now()).toLocaleDateString('bn-BD')}</span>
-        </div>
-        <div style="font-size:11px; color:#666; margin-top:2px;">📞 ${esc(fb.contact)}</div>
-        <p style="margin:6px 0 0 0; font-size:13px;">${esc(fb.message)}</p>
-      </div>
-    `).join('');
-  } catch (e) {
-    box.innerHTML = `<div class="hint" style="color:#b52e35;">ফিডব্যাক লোড করতে ব্যর্থ হয়েছে (ডাটাবেস টেবিল 'user_feedback' চেক করুন)।</div>`;
-  }
-}
-
-function openLogin(){
-  $("loginPanel").style.display = "block";
-  $("adminPanel").style.display = "none";
-}
-
-async function login(){
-  if (!sb) return alert("Database Error!");
-  const {data:auth, error} = await sb.auth.signInWithPassword({
-    email:$("loginEmail").value,
-    password:$("loginPassword").value
-  });
-
-  if(error) return $("loginMsg").textContent = error.message;
-  checkAdmin(auth.user);
-}
-
-async function checkAdmin(user){
-  if (!sb || !user) return;
-  const {data:admin} = await sb.from("admin_users").select("user_id").eq("user_id", user.id).maybeSingle();
-
-  if(!admin) return $("loginMsg").textContent = "Access Denied";
-
-  $("loginPanel").style.display = "none";
-  $("adminPanel").style.display = "block";
-  $("adminUser").textContent = "Admin: " + user.email;
-  $("adminName").value = data.siteName;
-
-  loadAdSettings();
-  loadVisitorHistory();
-  loadAdminFeedbacks();
-  render();
-}
-
-async function logout(){
-  if (sb) await sb.auth.signOut();
-  $("adminPanel").style.display = "none";
-}
-
-async function saveSettings(){
-  if (!sb) return;
-  await sb.from("site_settings").update({
-    site_name: $("adminName").value,
-    owner_name: "Raju Ahmmed"
-  }).eq("id", 1);
-  loadData();
-}
-
-async function addLocation(){
-  if (!sb || !$("newLocation").value.trim()) return;
-  await sb.from("locations").insert({ name: $("newLocation").value.trim() });
-  $("newLocation").value = "";
-  loadData();
-}
-
-function renderLocations(){
-  $("locationEditor").innerHTML = data.locations.map((loc, index) => `
-    <div class="locationItem">
-      <div class="locationName">${index + 1}. ${esc(loc.name||loc)}</div>
-      ${loc.id ? `<button class="smallDelete" onclick="deleteLocation(${loc.id})">Delete</button>` : `<span style="font-size:10px;color:#888;">Default</span>`}
-    </div>`).join("");
-}
-
-async function deleteLocation(id){
-  if(sb && confirm("মুছে ফেলবেন?")) {
-    await sb.from("locations").delete().eq("id", id);
-    loadData();
-  }
-}
-
-async function addRoute(){
-  if(!sb) return;
-  await sb.from("routes").insert({
-    from_location: $("newRouteFrom").value,
-    to_location: $("newRouteTo").value,
-    share_fare: Number($("newShareFare").value),
-    reserve_fare: Number($("newReserveFare").value)
-  });
-  loadData();
-}
-
-function renderRoutes(){
-  $("routeEditor").innerHTML = data.routes.map(r => `
-    <div class="routeItem">
-      <div class="adminGrid">
-        <input value="${esc(r.from_location)}" onchange="editRoute(${r.id},'from_location',this.value)">
-        <input value="${esc(r.to_location)}" onchange="editRoute(${r.id},'to_location',this.value)">
-      </div>
-      <div class="adminGrid" style="margin-top:4px;">
-        <input type="number" value="${r.share_fare}" onchange="editRoute(${r.id},'share_fare',this.value)">
-        <input type="number" value="${r.reserve_fare}" onchange="editRoute(${r.id},'reserve_fare',this.value)">
-      </div>
-      <button class="danger" style="margin-top:4px;" onclick="deleteRoute(${r.id})">Delete</button>
-    </div>`).join("");
-}
-
-async function editRoute(id, key, value){
-  if (!sb) return;
-  const patch = {};
-  patch[key] = (key.includes('fare')) ? Number(value) : value;
-  await sb.from("routes").update(patch).eq("id", id);
-  loadData();
-}
-
-async function deleteRoute(id){
-  if(sb && confirm("রুট মুছে ফেলবেন?")) {
-    await sb.from("routes").delete().eq("id", id);
-    loadData();
-  }
-}
-
-async function setupPresence(){
-  if(!sb) return;
-  const channel = sb.channel("dinajpur-live", {
-    config: { presence: { key: crypto.randomUUID() } }
-  });
-
-  channel.on("presence", {event:"sync"}, () => {
-    const count = Object.keys(channel.presenceState()).length || 1;
-    if ($("onlineVisitors")) $("onlineVisitors").textContent = count;
-    if ($("adminLiveVisitors")) $("adminLiveVisitors").textContent = count;
-  });
-
-  await channel.subscribe(async s => {
-    if(s==="SUBSCRIBED") await channel.track({ online_at: new Date() });
-  });
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  loadData();
-  setupPresence();
-});
-</script>
+    </script>
 </body>
 </html>
