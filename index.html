@@ -5,20 +5,45 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="theme-color" content="#087f62">
     
-    <!-- SEO & Search Engine Optimization Tags -->
-    <title>দিনাজপুর অটো ভাড়া গাইড - Dinajpur Auto Fare Guide</title>
-    <meta name="description" content="দিনাজপুর শহরের যেকোনো স্থান থেকে অন্য স্থানে যাওয়া ইজি-বাইক ও অটো রিকশার শেয়ার ও রিজার্ভ ভাড়ার সঠিক হিসাব জানুন।">
-    <meta name="keywords" content="দিনাজপুর অটো ভাড়া, Dinajpur auto fare guide, easy bike fare dinajpur, দিনাজপুর রুট গাইড">
-    <meta name="robots" content="index, follow">
+    <!-- SEO & Search Engine Optimization Meta Tags -->
+    <title>দিনাজপুর অটো ভাড়া গাইড | Dinajpur Auto Fare & Route Guide</title>
+    <meta name="description" content="দিনাজপুর শহরের অটো, ইজি বাইক ও রিকশা ভাড়া জানুন। Dinajpur auto fare guide, easy bike fare, zero point, rail station, medical fare update.">
+    <meta name="keywords" content="দিনাজপুর অটো ভাড়া, dinajpur auto fare, dinajpur auto bhara, dinajpur easy bike fare, dinajpur auto bhara guide, dinajpur auto route fare, দিনাজপুর ইজি বাইক ভাড়া, দিনাজপুর রুট গাইড, dinajpur auto vara calculator">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://dinajpur-auto-guide.pages.dev/">
 
     <!-- Open Graph / Social Media Meta -->
-    <meta property="og:title" content="দিনাজপুর অটো ভাড়া গাইড">
-    <meta property="og:description" content="দিনাজপুর শহরের অটো বা ইজি বাইক ভাড়ার নির্ভরযোগ্য হিসাব।">
+    <meta property="og:title" content="দিনাজপুর অটো ভাড়া গাইড - Dinajpur Auto Fare Guide">
+    <meta property="og:description" content="দিনাজপুর শহরের ইজি-বাইক ও অটো ভাড়ার সঠিক হিসাব। শেয়ার ও রিজার্ভ অটো ভাড়া দেখুন এক ক্লিকেই।">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dinajpur-auto-guide.pages.dev/">
+    <meta property="og:site_name" content="দিনাজপুর অটো ভাড়া গাইড">
+
+    <!-- Twitter Card Meta -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="দিনাজপুর অটো ভাড়া গাইড | Dinajpur Auto Fare Guide">
+    <meta name="twitter:description" content="দিনাজপুর শহরের অটো ও ইজি বাইক ভাড়ার নির্ভরযোগ্য তালিকা।">
 
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="RVVms8BVVUGWd_USCax_mUQQqiPHtiaWJoK8t1QlPHU" />
+
+    <!-- Schema.org JSON-LD Structured Data for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "দিনাজপুর অটো ভাড়া গাইড",
+      "alternateName": "Dinajpur Auto Fare Guide",
+      "url": "https://dinajpur-auto-guide.pages.dev/",
+      "applicationCategory": "TravelApplication",
+      "operatingSystem": "All",
+      "description": "দিনাজপুর শহরের ইজি-বাইক ও অটো রিকশার শেয়ার ও রিজার্ভ ভাড়ার সঠিক হিসাব জানুন।",
+      "author": {
+        "@type": "Person",
+        "name": "Raju Ahmmed"
+      }
+    }
+    </script>
     
     <style>
     :root{
@@ -209,14 +234,50 @@
     .singleBannerAd{
       border:1px solid var(--border);border-radius:12px;padding:8px;background:#fff
     }
+
+    /* RECENT SEARCH & EMERGENCY STYLES */
+    .recentGrid { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .recentChip {
+      background: #effaf6; border: 1px solid #a8ddce; color: var(--primary-dark);
+      padding: 6px 10px; border-radius: 8px; font-size: 11px; font-weight: 700;
+      cursor: pointer; display: flex; align-items: center; gap: 4px;
+    }
+    .emergencyGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .emergencyCard {
+      border: 1px solid var(--border); background: #fff; border-radius: 12px;
+      padding: 10px; text-decoration: none; color: inherit; display: flex;
+      flex-direction: column; justify-content: space-between; gap: 4px;
+    }
+    .emergencyCard b { font-size: 12px; color: var(--primary-dark); }
+    .emergencyCard span { font-size: 11px; color: #555; }
+    .emergencyCard .phoneBtn {
+      background: #e6f9f0; border: 1px solid #a8e6cb; color: var(--primary);
+      text-align: center; border-radius: 6px; padding: 4px; font-size: 11px;
+      font-weight: bold; margin-top: 4px;
+    }
+
+    /* SEO CONTENT SECTION STYLES */
+    .seoContent {
+      font-size: 12px;
+      color: #55625d;
+      line-height: 1.6;
+    }
+    .seoContent h3 {
+      font-size: 14px;
+      color: var(--primary-dark);
+      margin: 10px 0 4px;
+    }
+
     .dark{background:#101815;color:#edf5f1}
-    .dark .header,.dark .owner,.dark .card,.dark .visitorBox,.dark .inlineAdCard,.dark .singleBannerAd{background:#18231e;border-color:#304139}
-    .dark .brand h1,.dark .cardTitle{color:#b7f0de}
+    .dark .header,.dark .owner,.dark .card,.dark .visitorBox,.dark .inlineAdCard,.dark .singleBannerAd,.dark .emergencyCard{background:#18231e;border-color:#304139}
+    .dark .brand h1,.dark .cardTitle,.dark .emergencyCard b,.dark .seoContent h3{color:#b7f0de}
     .dark .circle{background:#24312b;color:#fff}
     .dark select,.dark input,.dark textarea{background:#1c2822;color:#edf5f1;border-color:#304139}
-    .dark .desc,.dark .ownerSub,.dark .hint{color:#a6b3ad}
+    .dark .desc,.dark .ownerSub,.dark .hint,.dark .emergencyCard span,.dark .seoContent{color:#a6b3ad}
     .dark .adBox{background:#18231e}
     .dark .adSpace{background:#1c2822;border-color:#304139;color:#a6b3ad}
+    .dark .recentChip { background: #1c2822; border-color: #304139; color: #b7f0de; }
+    .dark .phoneBtn { background: #24352d; border-color: #304139; color: #13bd8b; }
     footer{text-align:center;color:var(--primary-dark);font-size:11px;padding:20px 10px;opacity:.7}
     </style>
 </head>
@@ -238,7 +299,7 @@
                     <div class="logo">⚡</div>
                     <div>
                         <h1 id="siteName">দিনাজপুর অটো ভাড়া গাইড</h1>
-                        <p>Local Easy-Bike Fare</p>
+                        <p>Dinajpur Auto Fare & Route Guide</p>
                     </div>
                 </div>
                 <div class="headBtns">
@@ -253,7 +314,7 @@
             <h2 style="font-size:21px;margin-top:4px">
                 কোথায় কত ভাড়া? <span>এক ক্লিকেই জানুন</span>
             </h2>
-            <p class="desc">স্টেশন, বাসস্ট্যান্ড বা শহরের যেকোনো জায়গার অটো বা ইজি বাইক ভাড়ার হিসাব।</p>
+            <p class="desc">স্টেশন, বাসস্ট্যান্ড বা শহরের যেকোনো জায়গার অটো বা ইজি বাইক ভাড়ার হিসাব। Dinajpur auto bhara guide.</p>
         </section>
 
         <section class="owner">
@@ -271,12 +332,12 @@
         </div>
 
         <nav class="tabs">
-            <button class="tab active" id="popularTab" onclick="switchTab('popular')">☷ জনপ্রিয় রুট</button>
-            <button class="tab" id="customTab" onclick="switchTab('custom')">⌁ কাস্টম কিমি</button>
+            <button class="tab active" id="popularTab" onclick="switchTab('popular')">☷ রুট সার্চ</button>
+            <button class="tab" id="emergencyTab" onclick="switchTab('emergency')">🚨 জরুরি নম্বর</button>
             <button class="tab" id="feedbackTab" onclick="switchTab('feedback')">💬 রুট জমা/মতামত</button>
         </nav>
 
-        <!-- ROUTE -->
+        <!-- ROUTE SEARCH -->
         <section class="card" id="popular">
             <div class="cardTitle">🗺️ রুট সিলেক্ট করুন</div>
 
@@ -297,6 +358,12 @@
             </div>
 
             <button class="primary" onclick="showFare()">ভাড়া দেখুন</button>
+
+            <!-- RECENT SEARCHES (LOCAL TO THIS DEVICE ONLY) -->
+            <div id="recentContainer" style="margin-top: 15px; display: none;">
+                <div style="font-size: 11px; font-weight: bold; color: #89948f;">🕒 আপনার সাম্প্রতিক সার্চ (শুধু আপনার এখানে সেভ)</div>
+                <div class="recentGrid" id="recentList"></div>
+            </div>
         </section>
 
         <!-- RESULT -->
@@ -319,23 +386,40 @@
             <div class="hint">ভাড়া স্থানীয় পরিস্থিতি অনুযায়ী সামান্য পরিবর্তিত হতে পারে।</div>
         </section>
 
-        <!-- CUSTOM KM -->
-        <section class="card" id="custom" style="display:none">
-            <div class="cardTitle">🧮 কাস্টম কিমি হিসাব</div>
-            <div class="adminGrid">
-                <div>
-                    <label class="label">দূরত্ব (কিমি)</label>
-                    <input id="km" type="number" min="0" step=".1" placeholder="যেমন 5">
-                </div>
-                <div>
-                    <label class="label">প্রতি কিমি (৳)</label>
-                    <input id="rate" type="number" min="0" value="12">
-                </div>
-            </div>
-            <button class="primary" style="margin-top:10px" onclick="calculateKm()">হিসাব করুন</button>
-            <div id="kmResult" class="fare" style="display:none;margin-top:10px">
-                <small>আনুমানিক ভাড়া</small>
-                <b id="kmFare">৳0</b>
+        <!-- EMERGENCY CONTACTS -->
+        <section class="card" id="emergency" style="display:none">
+            <div class="cardTitle">🚨 দিনাজপুরের জরুরি হেল্পলাইন</div>
+            <div class="emergencyGrid">
+                <a href="tel:02588813333" class="emergencyCard">
+                    <b>🏥 এম আব্দুর রহিম মেডিকেল</b>
+                    <span>জরুরি বিভাগ / তথ্য</span>
+                    <div class="phoneBtn">📞 কল করুন</div>
+                </a>
+                <a href="tel:01713300588" class="emergencyCard">
+                    <b>🏥 দিনাজপুর সদর হাসপাতাল</b>
+                    <span>সদর হাসপাতাল জরুরি</span>
+                    <div class="phoneBtn">📞 কল করুন</div>
+                </a>
+                <a href="tel:01320137550" class="emergencyCard">
+                    <b>🚔 কোতোয়ালি থানা</b>
+                    <span>পুলিশ কন্ট্রোল রুম</span>
+                    <div class="phoneBtn">📞 কল করুন</div>
+                </a>
+                <a href="tel:01713373809" class="emergencyCard">
+                    <b>🚒 ফায়ার সার্ভিস</b>
+                    <span>দিনাজপুর স্টেশন</span>
+                    <div class="phoneBtn">📞 কল করুন</div>
+                </a>
+                <a href="tel:01713373752" class="emergencyCard">
+                    <b>🚆 জিআরপি (রেলওয়ে) পুলিশ</b>
+                    <span>স্টেশন নিরাপত্তা</span>
+                    <div class="phoneBtn">📞 কল করুন</div>
+                </a>
+                <a href="tel:999" class="emergencyCard">
+                    <b>🆘 জাতীয় জরুরি সেবা</b>
+                    <span>যেকোনো বিপদে (৯৯৯)</span>
+                    <div class="phoneBtn">📞 কল করুন</div>
+                </a>
             </div>
         </section>
 
@@ -405,6 +489,14 @@
                     <b id="totalVisitors">0</b>
                 </div>
             </div>
+        </section>
+
+        <!-- SEO TEXT CONTENT CARD FOR GOOGLE RANKING -->
+        <section class="card seoContent">
+            <h3>দিনাজপুর ইজি বাইক ও অটো ভাড়া গাইড (Dinajpur Auto Fare)</h3>
+            <p>দিনাজপুর শহরের জিরো পয়েন্ট, রেলওয়ে স্টেশন, বাহাদুর বাজার, বাস টার্মিনাল, এম আব্দুর রহিম মেডিকেল কলেজ বা হাজী দানেশ বিশ্ববিদ্যালয় (HSTU) সহ যেকোনো স্থানের সঠিক <strong>অটো ভাড়া (Easy bike fare in Dinajpur)</strong> জানার অনলাইন নির্দেশিকা।</p>
+            <h3>কেন এই অটো ক্যালকুলেটর ব্যবহার করবেন?</h3>
+            <p>নতুন কিংবা স্থানীয় যাত্রীদের জন্য দিনাজপুরে শেয়ার এবং রিজার্ভ অটো ভাড়ার (Dinajpur easy bike reserve fare) সঠিক ধারণা পেতে এই টুল সাহায্য করবে।</p>
         </section>
 
         <!-- LOGIN PANEL (SECRET) -->
@@ -553,7 +645,7 @@
     });
 
     const SUPABASE_URL = "https://wgjoeyxrkvojjpdqyppl.supabase.co";
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indnam9leXhya3ZvampwZHF5cHBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAyNTI3NTIsImV4cCI6MjEwNTgyODc1Mn0.BVBuNgJFEKUCuyUT42DwpbKBHFpdmi4SUpzd4CaRf84";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInRefiI6Indnam9leXhya3ZvampwZHF5cHBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAyNTI3NTIsImV4cCI6MjEwNTgyODc1Mn0.BVBuNgJFEKUCuyUT42DwpbKBHFpdmi4SUpzd4CaRf84";
 
     let sb = null;
     if (typeof supabase !== 'undefined') {
@@ -817,10 +909,10 @@
 
     function switchTab(type){
         $("popular").style.display = type==="popular" ? "block" : "none";
-        $("custom").style.display = type==="custom" ? "block" : "none";
+        $("emergency").style.display = type==="emergency" ? "block" : "none";
         $("feedback").style.display = type==="feedback" ? "block" : "none";
         $("popularTab").classList.toggle("active", type==="popular");
-        $("customTab").classList.toggle("active", type==="custom");
+        if($("emergencyTab")) $("emergencyTab").classList.toggle("active", type==="emergency");
         $("feedbackTab").classList.toggle("active", type==="feedback");
     }
 
@@ -868,6 +960,7 @@
         renderLocations();
         renderRoutes();
         renderPendingRoutes();
+        renderRecentRoutes();
     }
 
     async function loadData(){
@@ -908,6 +1001,44 @@
         $("to").value = a;
     }
 
+    /* LOCAL DEVICE RECENT SEARCH HISTORY */
+    function saveRecentRoute(from, to) {
+        let recent = JSON.parse(localStorage.getItem('dinajpur_recent_routes') || '[]');
+        recent = recent.filter(r => !(r.from === from && r.to === to)); // Duplicate remove
+        recent.unshift({ from, to });
+        if (recent.length > 5) recent.pop(); // Max 5 recent searches
+        localStorage.setItem('dinajpur_recent_routes', JSON.stringify(recent));
+        renderRecentRoutes();
+    }
+
+    function renderRecentRoutes() {
+        const container = $('recentContainer');
+        const list = $('recentList');
+        if (!container || !list) return;
+
+        let recent = JSON.parse(localStorage.getItem('dinajpur_recent_routes') || '[]');
+        if (recent.length === 0) {
+            container.style.display = 'none';
+            return;
+        }
+
+        container.style.display = 'block';
+        list.innerHTML = recent.map(r => `
+            <div class="recentChip" onclick="selectRecentRoute('${esc(r.from)}', '${esc(r.to)}')">
+                📍 ${esc(r.from.replace('দিনাজপুর ', ''))} ➔ ${esc(r.to.replace('দিনাজপুর ', ''))}
+            </div>
+        `).join('');
+    }
+
+    function selectRecentRoute(from, to) {
+        $('fromSearch').value = '';$('toSearch').value = '';
+        filterFromLocations();
+        filterToLocations();
+        $("from").value = from;
+        $("to").value = to;
+        showFare();
+    }
+
     function showFare(){
         const a = $("from").value, b = $("to").value;
         if(!a || !b || a===b) return alert("সঠিক রুট নির্বাচন করুন।");
@@ -916,6 +1047,9 @@
         $("routeName").textContent = a + " → " + b;
         $("shareFare").textContent = r ? "৳" + r.share_fare : "তথ্য নেই";
         $("reserveFare").textContent = r ? "৳" + r.reserve_fare : "তথ্য নেই";
+
+        // Save into device history
+        saveRecentRoute(a, b);
     }
 
     /* SHARE / COPY FARE INFO */
@@ -930,14 +1064,6 @@
             navigator.clipboard.writeText(text).then(() => {
                 alert("ভাড়ার তথ্য কপি করা হয়েছে!");
             });
-        }
-    }
-
-    function calculateKm(){
-        const km = Number($("km").value), rate = Number($("rate").value);
-        if(km>=0 && rate>=0) {
-            $("kmFare").textContent = "৳" + Math.round(km * rate);
-            $("kmResult").style.display = "block";
         }
     }
 
