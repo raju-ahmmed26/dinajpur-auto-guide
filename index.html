@@ -344,7 +344,7 @@
             <!-- FROM FIELD & SEARCH -->
             <div class="field">
                 <label class="label from">যাত্রা শুরু:</label>
-                <input class="searchInput" id="fromSearch" placeholder="🔍 যাত্রা শুরুর জায়গা খুঁজুন..." oninput="filterFromLocations()">
+                <input class="searchInput" id="fromSearch" placeholder="🔍 যাত্রা শুরুর জায়গা খুঁজুন (Banglish ok)..." oninput="filterFromLocations()">
                 <select id="from"></select>
             </div>
 
@@ -353,7 +353,7 @@
             <!-- TO FIELD & SEARCH -->
             <div class="field">
                 <label class="label to">গন্তব্য:</label>
-                <input class="searchInput" id="toSearch" placeholder="🔍 গন্তব্যের জায়গা খুঁজুন..." oninput="filterToLocations()">
+                <input class="searchInput" id="toSearch" placeholder="🔍 গন্তব্যের জায়গা খুঁজুন (Banglish ok)..." oninput="filterToLocations()">
                 <select id="to"></select>
             </div>
 
@@ -654,6 +654,55 @@
 
     const $ = id => document.getElementById(id);
 
+    // BANGLISH ALIASES & KEYWORDS DICTIONARY
+    const locationAliases = {
+        "দিনাজপুর জিরো পয়েন্ট": ["zero point", "jiro point", "30 point", "dinajpur zero point", "jiropoint", "zeropoint"],
+        "দিনাজপুর রেলওয়ে স্টেশন": ["station", "railway station", "rail station", "relway station", "rel station", "dinajpur station"],
+        "দিনাজপুর বাস টার্মিনাল": ["bus terminal", "terminal", "bus tirminal", "dinajpur terminal", "bus stand"],
+        "বাহাদুর বাজার": ["bahadur bazar", "bahadurbazar", "bazar"],
+        "লিলির মোড়": ["lilir mor", "lili mor", "lilir morr", "lilirmor"],
+        "মডার্ন মোড়": ["modern mor", "modern morr", "modarn mor"],
+        "চৌরঙ্গী": ["chourongi", "chaurangi", "chourongi mor"],
+        "বালুবাড়ী": ["balubari", "balubari mor"],
+        "পুলহাট": ["pulhat", "pul hat"],
+        "মুন্সিপাড়া": ["munsipara", "munshipara"],
+        "গণেশতলা": ["ganeshtola", "ganesh tola", "goneshtola"],
+        "কালিতলা": ["kalitola", "kali tola"],
+        "নিউ টাউন": ["new town", "newtown"],
+        "বড়মাঠ": ["boro math", "boromath", "big field"],
+        "কোর্ট চত্বর": ["court", "cort", "court chottor"],
+        "জেলা প্রশাসকের কার্যালয়": ["dc office", "dcoffice", "jela posasok"],
+        "জেলা জজ কোর্ট": ["judge court", "joj cort"],
+        "দিনাজপুর সদর হাসপাতাল": ["sadar hospital", "sador hospital", "shodor hospital", "hospital"],
+        "দিনাজপুর মেডিকেল কলেজ হাসপাতাল": ["medical", "medical college", "dinajpur medical"],
+        "এম আব্দুর রহিম মেডিকেল কলেজ": ["m abdur rahim", "m abdur rahim medical", "abdur rahim medical", "mar mc", "marmc"],
+        "জিয়া হার্ট ফাউন্ডেশন": ["zia heart foundation", "heart foundation"],
+        "দিনাজপুর সরকারি কলেজ": ["govt college", "dinajpur govt college", "government college"],
+        "দিনাজপুর সরকারি মহিলা কলেজ": ["mohila college", "govt mohila college", "womens college"],
+        "দিনাজপুর জিলা স্কুল": ["zilla school", "jilla school"],
+        "দিনাজপুর সরকারি বালিকা উচ্চ বিদ্যালয়": ["balika school", "govt balika school", "girls school"],
+        "দিনাজপুর পলিটেকনিক ইনস্টিটিউট": ["polytechnic", "politecnic", "polytechnic institute"],
+        "পোস্ট অফিস": ["post office", "postoffice"],
+        "দিনাজপুর প্রেস ক্লাব": ["press club", "pressclub"],
+        "রাজবাড়ী": ["rajbari", "raj bari"],
+        "কাচারী বাজার": ["kachari bazar", "kacari bazar"],
+        "বিরল মোড়": ["birol mor", "birol morr"],
+        "সুইহারী": ["suihari", "suihari mor", "suihariil"],
+        "উত্তর বালুবাড়ী": ["uttar balubari", "north balubari"],
+        "রামনগর": ["ramnagar", "ram nagar"],
+        "মালদহপট্টি": ["maldahpotti", "maldah potti"],
+        "মিশন রোড": ["mission road", "mision road"],
+        "লালবাগ": ["lalbag", "lalbagh"],
+        "ফুলবাড়ী বাসস্ট্যান্ড": ["fulbari bus stand", "fulbari busstand", "fulbari stand"],
+        "উপশহর": ["uposhohor", "uposohor", "upashahar"],
+        "ঘোড়াঘাট রোড": ["ghoraghat road", "goraghat road"],
+        "ঢাকাইয়া পট্টি": ["dhakaiya potti", "dhakaiyapotti"],
+        "স্টেশন রোড": ["station road", "stationroad"],
+        "মিশন হাসপাতাল": ["mission hospital", "mision hospital"],
+        "চেহেলগাজী মাজার": ["chehelgazi majar", "chehelgaji majar"],
+        "রামসাগর": ["ramsagar", "ram sagar"]
+    };
+
     const defaultLocations = [
         "দিনাজপুর জিরো পয়েন্ট", "দিনাজপুর রেলওয়ে স্টেশন", "দিনাজপুর বাস টার্মিনাল", "বাহাদুর বাজার", 
         "লিলির মোড়", "মডার্ন মোড়", "চৌরঙ্গী", "বালুবাড়ী", "পুলহাট", "মুন্সিপাড়া", "গণেশতলা", 
@@ -916,34 +965,56 @@
         $("feedbackTab").classList.toggle("active", type==="feedback");
     }
 
-    /* INDEPENDENT LOCATION SEARCH FILTERS */
-    function filterFromLocations(){
-        const query = $('fromSearch').value.toLowerCase().trim();
-        const currentFrom = $("from").value;
-        const filtered = data.locations.filter(loc => {
-            const name = (loc.name || loc).toLowerCase();
-            return name.includes(query);
+    /* NORMALIZATION HELPER FOR SEARCH */
+    function normalizeText(str) {
+        return (str || '')
+            .toLowerCase()
+            .trim()
+            .replace(/[\s\-_,.]+/g, '')
+            .replace(/z/g, 'j')
+            .replace(/sh/g, 's');
+    }
+
+    /* INDEPENDENT LOCATION SEARCH FILTERS WITH BANGLISH KEYWORDS */
+    function filterLocationsByQuery(rawQuery) {
+        const query = normalizeText(rawQuery);
+        if (!query) return data.locations;
+
+        return data.locations.filter(loc => {
+            const mainName = loc.name || loc;
+            const normName = normalizeText(mainName);
+            if (normName.includes(query)) return true;
+
+            const aliases = locationAliases[mainName] || [];
+            return aliases.some(alias => normalizeText(alias).includes(query));
         });
+    }
+
+    function filterFromLocations(){
+        const query = $('fromSearch').value;
+        const currentFrom = $("from").value;
+        const filtered = filterLocationsByQuery(query);
+
         $("from").innerHTML = filtered.map(x => {
             const name = x.name || x;
             return `<option value="${esc(name)}">${esc(name)}</option>`;
         }).join("");
+
         if (filtered.some(x => (x.name || x) === currentFrom)) {
             $("from").value = currentFrom;
         }
     }
 
     function filterToLocations(){
-        const query = $('toSearch').value.toLowerCase().trim();
+        const query = $('toSearch').value;
         const currentTo = $("to").value;
-        const filtered = data.locations.filter(loc => {
-            const name = (loc.name || loc).toLowerCase();
-            return name.includes(query);
-        });
+        const filtered = filterLocationsByQuery(query);
+
         $("to").innerHTML = filtered.map(x => {
             const name = x.name || x;
             return `<option value="${esc(name)}">${esc(name)}</option>`;
         }).join("");
+
         if (filtered.some(x => (x.name || x) === currentTo)) {
             $("to").value = currentTo;
         }
